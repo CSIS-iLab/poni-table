@@ -47,11 +47,14 @@ Branches should use the following naming conventions:
 | ------------------------- | --------------------------------------------------------- | --------------------------- |
 | New Feature               | `feature/<short description of feature>`                  | `feature/header-navigation` |
 | Bug Fixes                 | `bug/<short description of bug>`                          | `bug/mobile-navigation`     |
+| Configuration             | `dev/<short description of config>`                       | `dev/add-npm-package`       |
 | Documentation             | `docs/<short description of documentation being updated>` | `docs/readme`               |
 | Code clean-up/refactoring | `refactor/<short description>`                            | `refactor/apply-linting`    |
 | Content Updates           | `content/<short description of content>`                  | `content/add-new-posts`     |
 
 When ready to merge, submit a Pull Request into `main`. All code will be reviewed by the lead developer on the project before being merged into `main`.
+
+Once a Pull Request is approved, squash and merge it to `main` and delete the branch.
 
 ### Commit Messages
 
