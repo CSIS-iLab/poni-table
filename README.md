@@ -3,7 +3,10 @@
 ### Quick Start Instructions
 
 This repo uses `node v16.9.1 (npm v8.4.1)`
+
+@TODO: Update with final link to data: 
 Data coming from `https://docs.google.com/spreadsheets/d/e/update-id-here/pub?output=csv`
+
 Clone & Install the dependencies...
 
 ```bash
