@@ -9,7 +9,7 @@
   export let dataset;
   let selectedCategory = "";
   let selectedResourceType = "";
-  let selectedAuthority = "";
+  let selectedSpeaker = "";
   let selectedTags = [];
   let searchText;
   $: row = { isOpen: false };
@@ -27,9 +27,7 @@
         const filteredResource = selectedResourceType
           ? selectedResourceType
           : row.type_of_resource;
-        const filteredAuthority = selectedAuthority
-          ? selectedAuthority
-          : row.authority;
+        const filteredSpeaker = selectedSpeaker ? selectedSpeaker : row.speaker;
         const filteredTags =
           selectedTags.length > 0
             ? row.tags.some((tag) => selectedTags.includes(tag))
@@ -45,12 +43,12 @@
             row.type_of_resource
               .toLowerCase()
               .includes(filteredActivity.toLowerCase()) ||
-            row.authority
+            row.speaker
               .toLowerCase()
               .includes(filteredActivity.toLowerCase())) &&
           row.category === filteredCategory &&
           row.type_of_resource === filteredResource &&
-          row.authority === filteredAuthority &&
+          row.speaker === filteredSpeaker &&
           filteredTags
         );
       })
@@ -76,7 +74,7 @@
       {dataset}
       filteredData={filteredData()}
       bind:row
-      bind:selectedAuthority
+      bind:selectedSpeaker
       bind:selectedResourceType
       bind:selectedCategory
       bind:selectedTags

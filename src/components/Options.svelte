@@ -9,7 +9,7 @@
   export let filteredData;
   export let selectedCategory;
   export let selectedResourceType;
-  export let selectedAuthority;
+  export let selectedSpeaker;
   export let selectedTags;
   export let searchText = "";
   export let row;
@@ -95,12 +95,12 @@
       removeExtraContentStyle();
       switchRowBottomLine();
     }
-    if (selectName === "Authority") {
-      // look through list of dataset.authority (speakers
-      // with titles) and match to dataset.authority_name (the selected speaker). feed that authority to selectedAuthority.
-      selectedAuthority =
-        dataset.authority[
-          dataset.authority.findIndex((element) =>
+    if (selectName === "Speaker") {
+      // look through list of dataset.speaker (speakers
+      // with titles) and match to dataset.speaker_name (the selected speaker). feed that speaker to selectedSpeaker.
+      selectedSpeaker =
+        dataset.speaker[
+          dataset.speaker.findIndex((element) =>
             element.includes(event.detail.value),
           )
         ];
@@ -129,8 +129,8 @@
     if (selectName === "Category") {
       selectedCategory = "";
       updateActiveTab("");
-    } else if (selectName === "Authority") {
-      selectedAuthority = "";
+    } else if (selectName === "Speaker") {
+      selectedSpeaker = "";
     } else {
       selectedResourceType = "";
     }
@@ -244,7 +244,7 @@
 <!-- dropdown filters -->
 
 <div class="selects">
-  <!--category (state)-->
+  <!--Category-->
   <div class="select-container">
     <div class="label">Category</div>
     <Select
@@ -258,7 +258,7 @@
       on:clear={() => handleClear("Category")}
     />
   </div>
-  <!--Speaker (authority)-->
+  <!--Speaker-->
   <div class="select-container">
     <div class="label">Speaker</div>
     <Select
@@ -266,10 +266,10 @@
       showChevron={true}
       {optionIdentifier}
       {labelIdentifier}
-      items={dataset.authority_name}
+      items={dataset.speaker_name}
       placeholder="Select a speaker"
-      on:select={(event) => handleSelect(event, "Authority")}
-      on:clear={() => handleClear("Authority")}
+      on:select={(event) => handleSelect(event, "Speaker")}
+      on:clear={() => handleClear("Speaker")}
     />
   </div>
   <!-- Event Type (ResourceType)-->

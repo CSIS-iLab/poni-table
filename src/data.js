@@ -43,13 +43,11 @@ export default function getData() {
           image_source: row.image_source,
           key_moment: row.key_moment,
         },
-        //poni: category
         category: row.category,
-        //poni: category
         category_name: row.category_name,
         //poni: speaker
-        authority: row.speaker,
-        authority_name: "",
+        speaker: row.speaker,
+        speaker_name: "",
         //poni: type
         type_of_resource: row.type,
         //poni: date,
@@ -59,9 +57,9 @@ export default function getData() {
     });
 
     console.log("Data", data);
-    const authority = formatAuthority(data);
+    const speaker = formatSpeaker(data);
 
-    const authority_name = createAndAssignAuthorityNames(data);
+    const speaker_name = createAndAssignSpeakerNames(data);
 
     const resourceTypes = formatResourceType(data);
 
@@ -70,14 +68,12 @@ export default function getData() {
     const dates = createAndAssignDateObjects(data);
     return {
       data: data,
-      //poni: category
       categories: categories,
       dates: dates,
       tags: tags.map((tagName) => tagName.split("_").join(" ")),
-      //poni: speaker
-      authority: authority,
+      speaker: speaker,
       //speaker without title - for dropdown
-      authority_name: authority_name,
+      speaker_name: speaker_name,
       //poni: type
       resourceTypes: resourceTypes,
     };
@@ -85,21 +81,21 @@ export default function getData() {
   return dataPromise;
 }
 
-function createAndAssignAuthorityNames(array) {
-  let authority_Name_Array = [];
+function createAndAssignSpeakerNames(array) {
+  let speaker_Name_Array = [];
 
   for (let i = 0; i < array.length; i++) {
-    let name = array[i].authority.split(",")[0];
-    if (array[i].authority != "") {
-      array[i].authority_name = name;
+    let name = array[i].speaker.split(",")[0];
+    if (array[i].speaker != "") {
+      array[i].speaker_name = name;
 
-      if (!authority_Name_Array.includes(name)) {
-        authority_Name_Array.push(name);
+      if (!speaker_Name_Array.includes(name)) {
+        speaker_Name_Array.push(name);
       }
     }
   }
 
-  return authority_Name_Array;
+  return speaker_Name_Array;
 }
 
 function createAndAssignDateObjects(array) {
@@ -121,8 +117,8 @@ function createAndAssignDateObjects(array) {
   return dates;
 }
 
-function formatAuthority(array) {
-  return [...new Set(array.map((el) => el.authority))];
+function formatSpeaker(array) {
+  return [...new Set(array.map((el) => el.speaker))];
 }
 
 function formatResourceType(array) {

@@ -8,8 +8,8 @@
   // for  bar chart at the top of the page
   function getMostReferencedSpeakers() {
     filteredData.forEach((element) => {
-      if (element.authority != "") {
-        authorities.push(element.authority);
+      if (element.speaker != "") {
+        authorities.push(element.speaker);
       }
     });
     return countOccurences(authorities);

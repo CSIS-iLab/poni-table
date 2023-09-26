@@ -13,7 +13,7 @@
     "date",
     "activity",
     "category",
-    "authority",
+    "speaker",
     "type of resource",
   ];
 
@@ -45,7 +45,7 @@
     "Activity",
     "Date",
     "Category",
-    "Authority",
+    "Speaker",
     "Type of Resource",
     "Tags",
   ];
@@ -214,7 +214,7 @@
             >
             <!-- event speaker -->
             <td class="table__body__cell table__body__cell--data"
-              >{rows.authority}</td
+              >{rows.speaker}</td
             >
             <!-- event type -->
             <td class="table__body__cell table__body__cell--data"
