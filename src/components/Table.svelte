@@ -12,8 +12,8 @@
   const sortByColumns = [
     "date",
     "activity",
-    "state",
-    "authority",
+    "category",
+    "speaker",
     "type of resource",
   ];
 
@@ -44,8 +44,8 @@
   const headerNames = [
     "Activity",
     "Date",
-    "State",
-    "Authority",
+    "Category",
+    "Speaker",
     "Type of Resource",
     "Tags",
   ];
@@ -210,15 +210,15 @@
             >
             <!-- event category -->
             <td class="table__body__cell table__body__cell--data"
-              >{rows.state}</td
+              >{rows.category}</td
             >
             <!-- event speaker -->
             <td class="table__body__cell table__body__cell--data"
-              >{rows.authority}</td
+              >{rows.speaker}</td
             >
             <!-- event type -->
             <td class="table__body__cell table__body__cell--data"
-              >{rows.type_of_resource}</td
+              >{rows.type}</td
             >
             <td
               class="table__body__cell table__body__cell--data table__body__cell__icon-container"
@@ -238,10 +238,10 @@
           <tr class="extra-content hide">
             <td class="table__body__cell" colspan="6">
               <div class="extra-content__container">
-                <div class="description">{rows.activity.description}</div>
+                <div class="description">{rows.activity.quote}</div>
                 <div class="link">
                   <a
-                    href={rows.activity.link}
+                    href={rows.activity.source_1}
                     target="_blank"
                     rel="noopener noreferrer"
                     >Go to resource<span class="icon-container"

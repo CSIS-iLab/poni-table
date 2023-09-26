@@ -77,7 +77,7 @@
   }
 
   const formatOption = (opt, type) => {
-    if (selectName !== "State") {
+    if (selectName !== "Category") {
       return opt;
     } else if (type === "name") {
       const name = opt.name;

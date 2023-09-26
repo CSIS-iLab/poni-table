@@ -28,12 +28,10 @@ export default function getData() {
           .filter((tagName) => row[tagName])
           .map((tagName) => tagName.split("_").join(" ")),
         activity: {
-          //poni: title
           title: row.title,
-          //poni: quote
-          description: row.quote,
+          quote: row.quote,
           //poni: source_1
-          link: row.source_1,
+          source_1: row.source_1,
           vpn_required_1: row.vpn_required_1,
           source_2: row.source_2,
           vpn_required_2: row.vpn_required_2,
@@ -43,15 +41,11 @@ export default function getData() {
           image_source: row.image_source,
           key_moment: row.key_moment,
         },
-        //poni: category
-        state: row.category,
-        //poni: category
-        state_name: row.category_name,
-        //poni: speaker
-        authority: row.speaker,
-        authority_name: "",
-        //poni: type
-        type_of_resource: row.type,
+        category: row.category,
+        category_name: row.category_name,
+        speaker: row.speaker,
+        speaker_name: "",
+        type: row.type,
         //poni: date,
         date_string: row.date,
         date: "",
@@ -59,47 +53,44 @@ export default function getData() {
     });
 
     console.log("Data", data);
-    const authority = formatAuthority(data);
+    const speaker = formatSpeaker(data);
 
-    const authority_name = createAndAssignAuthorityNames(data);
+    const speaker_name = createAndAssignSpeakerNames(data);
 
-    const resourceTypes = formatResourceType(data);
+    const type = formatType(data);
 
-    const states = formatStates(data);
+    const categories = formatCategories(data);
 
     const dates = createAndAssignDateObjects(data);
     return {
       data: data,
-      //poni: category
-      states: states,
+      categories: categories,
       dates: dates,
       tags: tags.map((tagName) => tagName.split("_").join(" ")),
-      //poni: speaker
-      authority: authority,
+      speaker: speaker,
       //speaker without title - for dropdown
-      authority_name: authority_name,
-      //poni: type
-      resourceTypes: resourceTypes,
+      speaker_name: speaker_name,
+      type: type,
     };
   });
   return dataPromise;
 }
 
-function createAndAssignAuthorityNames(array) {
-  let authority_Name_Array = [];
+function createAndAssignSpeakerNames(array) {
+  let speaker_Name_Array = [];
 
   for (let i = 0; i < array.length; i++) {
-    let name = array[i].authority.split(",")[0];
-    if (array[i].authority != "") {
-      array[i].authority_name = name;
+    let name = array[i].speaker.split(",")[0];
+    if (array[i].speaker != "") {
+      array[i].speaker_name = name;
 
-      if (!authority_Name_Array.includes(name)) {
-        authority_Name_Array.push(name);
+      if (!speaker_Name_Array.includes(name)) {
+        speaker_Name_Array.push(name);
       }
     }
   }
 
-  return authority_Name_Array;
+  return speaker_Name_Array;
 }
 
 function createAndAssignDateObjects(array) {
@@ -121,21 +112,21 @@ function createAndAssignDateObjects(array) {
   return dates;
 }
 
-function formatAuthority(array) {
-  return [...new Set(array.map((el) => el.authority))];
+function formatSpeaker(array) {
+  return [...new Set(array.map((el) => el.speaker))];
 }
 
-function formatResourceType(array) {
-  return [...new Set(array.map((el) => el.type_of_resource))];
+function formatType(array) {
+  return [...new Set(array.map((el) => el.type))];
 }
 
-function formatStates(array) {
-  // return [...new Set(row.map((r) => r.state))].map((state) => {
+function formatCategories(array) {
+  // return [...new Set(row.map((r) => r.category))].map((category) => {
   //   return {
-  //     name: row.find((r) => r.state === state).state_name,
-  //     value: row.find((r) => r.state === state).state,
+  //     name: row.find((r) => r.category === category).category_name,
+  //     value: row.find((r) => r.category === category).category,
   //   };
   // });
 
-  return [...new Set(array.map((el) => el.state))];
+  return [...new Set(array.map((el) => el.category))];
 }

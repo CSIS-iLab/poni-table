@@ -7,9 +7,9 @@
   import Footer from "./Footer.svelte";
 
   export let dataset;
-  let selectedState = "";
-  let selectedResourceType = "";
-  let selectedAuthority = "";
+  let selectedCategory = "";
+  let selectedType = "";
+  let selectedSpeaker = "";
   let selectedTags = [];
   let searchText;
   $: row = { isOpen: false };
@@ -21,13 +21,11 @@
         // for Keyword Search
         const filteredActivity = searchText ? searchText : row.activity.title;
         // for dropdowns
-        const filteredState = selectedState ? selectedState : row.state;
-        const filteredResource = selectedResourceType
-          ? selectedResourceType
-          : row.type_of_resource;
-        const filteredAuthority = selectedAuthority
-          ? selectedAuthority
-          : row.authority;
+        const filteredCategory = selectedCategory
+          ? selectedCategory
+          : row.category;
+        const filteredResource = selectedType ? selectedType : row.type;
+        const filteredSpeaker = selectedSpeaker ? selectedSpeaker : row.speaker;
         const filteredTags =
           selectedTags.length > 0
             ? row.tags.some((tag) => selectedTags.includes(tag))
@@ -37,16 +35,16 @@
           (row.activity.title
             .toLowerCase()
             .includes(filteredActivity.toLowerCase()) ||
-            row.state.toLowerCase().includes(filteredActivity.toLowerCase()) ||
-            row.type_of_resource
+            row.category
               .toLowerCase()
               .includes(filteredActivity.toLowerCase()) ||
-            row.authority
+            row.type.toLowerCase().includes(filteredActivity.toLowerCase()) ||
+            row.speaker
               .toLowerCase()
               .includes(filteredActivity.toLowerCase())) &&
-          row.state === filteredState &&
-          row.type_of_resource === filteredResource &&
-          row.authority === filteredAuthority &&
+          row.category === filteredCategory &&
+          row.type === filteredResource &&
+          row.speaker === filteredSpeaker &&
           filteredTags
         );
       })
@@ -72,9 +70,9 @@
       {dataset}
       filteredData={filteredData()}
       bind:row
-      bind:selectedAuthority
-      bind:selectedResourceType
-      bind:selectedState
+      bind:selectedSpeaker
+      bind:selectedType
+      bind:selectedCategory
       bind:selectedTags
       bind:searchText
     />
