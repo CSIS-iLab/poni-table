@@ -1,8 +1,8 @@
-@use '../abstracts/' as *;
+@use "../abstracts/" as *;
 
 .options {
   background-color: $color-background-white;
-  
+
   &__container {
     padding-left: var(--container-padding);
     padding-right: var(--container-padding);
@@ -20,11 +20,11 @@
       width: rem(10);
       height: rem(10);
     }
-  
+
     &::-webkit-scrollbar-track {
       -webkit-box-shadow: inset 0 0 9px $color-background-white;
     }
-  
+
     &::-webkit-scrollbar-thumb {
       border-radius: 10px;
       -webkit-box-shadow: inset 0 0 9px $color-scrollbar-background;
@@ -74,7 +74,7 @@
       text-align: left;
       inline-size: min-content;
       padding-top: rem(4);
-      padding-bottom: rem(16); 
+      padding-bottom: rem(16);
       padding-left: rem(8);
       padding-right: rem(4);
       border-bottom: 3px solid $color-background-gray-300;
@@ -89,23 +89,30 @@
     &--tab--all:hover {
       color: $color-text-gray-500;
       border-bottom: 3px solid $color-borders-gray-400;
-      transition: color 0.3s ease-in-out, border-bottom 0.3s ease-in-out;
+      transition:
+        color 0.3s ease-in-out,
+        border-bottom 0.3s ease-in-out;
 
       .options__count {
         color: $color-text-gray-300;
         background-color: $color-background-gray-300;
-        transition: background-color 0.3s ease-in-out, color 0.3s ease-in-out;
+        transition:
+          background-color 0.3s ease-in-out,
+          color 0.3s ease-in-out;
       }
     }
 
-    &--tab--all--active, &--tab--all--active:hover {
+    &--tab--all--active,
+    &--tab--all--active:hover {
       border-bottom: 3px solid $color-borders-gray-400;
       transition: border-bottom 0.3s ease-in-out;
 
       .options__count {
         color: $color-text-white;
         background-color: $color-text-gray-500;
-        transition: background-color 0.3s ease-in-out, color 0.3s ease-in-out;
+        transition:
+          background-color 0.3s ease-in-out,
+          color 0.3s ease-in-out;
       }
     }
 
@@ -116,69 +123,90 @@
     &--tab--Economic-Development:hover {
       color: $color-text-gray-500;
       border-bottom: 3px solid $color-policy-goals-economic-development;
-      transition: color 0.3s ease-in-out, border-bottom 0.3s ease-in-out;
+      transition:
+        color 0.3s ease-in-out,
+        border-bottom 0.3s ease-in-out;
 
       .options__count {
         color: $color-text-gray-300;
         background-color: $color-background-gray-300;
-        transition: background-color 0.3s ease-in-out, color 0.3s ease-in-out;
+        transition:
+          background-color 0.3s ease-in-out,
+          color 0.3s ease-in-out;
       }
     }
 
-    &--tab--Economic-Development--active, &--tab--Economic-Development--active:hover {
+    &--tab--Economic-Development--active,
+    &--tab--Economic-Development--active:hover {
       border-bottom: 3px solid $color-policy-goals-economic-development;
       transition: border-bottom 0.3s ease-in-out;
 
       .options__count {
         color: $color-text-white;
         background-color: $color-policy-goals-economic-development;
-        transition: background-color 0.3s ease-in-out, color 0.3s ease-in-out;
+        transition:
+          background-color 0.3s ease-in-out,
+          color 0.3s ease-in-out;
       }
     }
 
     &--tab--Emissions-Reduction:hover {
       color: $color-text-gray-500;
       border-bottom: 3px solid $color-policy-goals-emissions-reduction;
-      transition: color 0.3s ease-in-out, border-bottom 0.3s ease-in-out;
+      transition:
+        color 0.3s ease-in-out,
+        border-bottom 0.3s ease-in-out;
 
       .options__count {
         color: $color-text-gray-300;
         background-color: $color-background-gray-300;
-        transition: background-color 0.3s ease-in-out, color 0.3s ease-in-out;
+        transition:
+          background-color 0.3s ease-in-out,
+          color 0.3s ease-in-out;
       }
     }
 
-    &--tab--Emissions-Reduction--active,  &--tab--Emissions-Reduction--active:hover {
+    &--tab--Emissions-Reduction--active,
+    &--tab--Emissions-Reduction--active:hover {
       border-bottom: 3px solid $color-policy-goals-emissions-reduction;
       transition: border-bottom 0.3s ease-in-out;
 
       .options__count {
         color: $color-text-white;
         background-color: $color-policy-goals-emissions-reduction;
-        transition: color 0.3s ease-in-out, background-color 0.3s ease-in-out;
+        transition:
+          color 0.3s ease-in-out,
+          background-color 0.3s ease-in-out;
       }
     }
 
     &--tab--Resilience:hover {
       color: $color-text-gray-500;
       border-bottom: 3px solid $color-policy-goals-resilience;
-      transition: color 0.3s ease-in-out, border-bottom 0.3s ease-in-out;
+      transition:
+        color 0.3s ease-in-out,
+        border-bottom 0.3s ease-in-out;
 
       .options__count {
         color: $color-text-gray-300;
         background-color: $color-background-gray-300;
-        transition: background-color 0.3s ease-in-out, color 0.3s ease-in-out;
+        transition:
+          background-color 0.3s ease-in-out,
+          color 0.3s ease-in-out;
       }
     }
 
-    &--tab--Resilience--active, &--tab--Resilience--active:hover {
+    &--tab--Resilience--active,
+    &--tab--Resilience--active:hover {
       border-bottom: 3px solid $color-policy-goals-resilience;
       transition: border-bottom 0.3s ease-in-out;
 
       .options__count {
         color: $color-text-white;
         background-color: $color-policy-goals-resilience;
-        transition: background-color 0.3s ease-in-out, color 0.3s ease-in-out;
+        transition:
+          background-color 0.3s ease-in-out,
+          color 0.3s ease-in-out;
       }
     }
   }
@@ -189,7 +217,7 @@
     @extend %text-style-ui-5;
   }
 
-  @include breakpoint('medium') {
+  @include breakpoint("medium") {
     &__btn--tab {
       inline-size: initial;
     }
@@ -207,7 +235,9 @@
     &--active {
       color: $color-text-white;
       background-color: $color-text-gray-400;
-      transition: background-color 0.3s ease-in-out, color 0.3s ease-in-out;
+      transition:
+        background-color 0.3s ease-in-out,
+        color 0.3s ease-in-out;
     }
   }
 }
