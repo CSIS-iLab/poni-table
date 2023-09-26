@@ -241,7 +241,7 @@
                 <div class="description">{rows.activity.quote}</div>
                 <div class="link">
                   <a
-                    href={rows.activity.link}
+                    href={rows.activity.source_1}
                     target="_blank"
                     rel="noopener noreferrer"
                     >Go to resource<span class="icon-container"
