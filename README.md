@@ -1,4 +1,4 @@
-# Russian Nuclear Threats Timeline | CSIS
+# Russian Nuclear Threats Table | CSIS
 
 ### Quick Start Instructions
 
