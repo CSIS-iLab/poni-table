@@ -8,7 +8,7 @@
   export let dataset;
   export let filteredData;
   export let selectedCategory;
-  export let selectedResourceType;
+  export let selectedType;
   export let selectedSpeaker;
   export let selectedTags;
   export let searchText = "";
@@ -112,8 +112,8 @@
         updateActiveTab(event.target.value);
         selectedCategory = event.target.value;
       }
-    } else if (selectName == "ResourceType") {
-      selectedResourceType = event.detail.value;
+    } else if (selectName == "Type") {
+      selectedType = event.detail.value;
     }
   }
 
@@ -132,7 +132,7 @@
     } else if (selectName === "Speaker") {
       selectedSpeaker = "";
     } else {
-      selectedResourceType = "";
+      selectedType = "";
     }
   }
 
@@ -272,18 +272,18 @@
       on:clear={() => handleClear("Speaker")}
     />
   </div>
-  <!-- Event Type (ResourceType)-->
+  <!--Type-->
   <div class="select-container">
-    <div class="label">Event Type</div>
+    <div class="label">Type</div>
     <Select
       indicatorSvg={chevron}
       showChevron={true}
       {optionIdentifier}
       {labelIdentifier}
-      items={dataset.resourceTypes}
+      items={dataset.type}
       placeholder="Select a type"
-      on:select={(event) => handleSelect(event, "ResourceType")}
-      on:clear={(event) => handleClear(event, "ResourceType")}
+      on:select={(event) => handleSelect(event, "Type")}
+      on:clear={(event) => handleClear(event, "Type")}
     />
   </div>
   <!-- Tags (to be deleted; replace with dates)-->

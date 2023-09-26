@@ -8,7 +8,7 @@
 
   export let dataset;
   let selectedCategory = "";
-  let selectedResourceType = "";
+  let selectedType = "";
   let selectedSpeaker = "";
   let selectedTags = [];
   let searchText;
@@ -24,9 +24,7 @@
         const filteredCategory = selectedCategory
           ? selectedCategory
           : row.category;
-        const filteredResource = selectedResourceType
-          ? selectedResourceType
-          : row.type;
+        const filteredResource = selectedType ? selectedType : row.type;
         const filteredSpeaker = selectedSpeaker ? selectedSpeaker : row.speaker;
         const filteredTags =
           selectedTags.length > 0
@@ -73,7 +71,7 @@
       filteredData={filteredData()}
       bind:row
       bind:selectedSpeaker
-      bind:selectedResourceType
+      bind:selectedType
       bind:selectedCategory
       bind:selectedTags
       bind:searchText

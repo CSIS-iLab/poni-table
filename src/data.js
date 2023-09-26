@@ -45,7 +45,6 @@ export default function getData() {
         category_name: row.category_name,
         speaker: row.speaker,
         speaker_name: "",
-        //poni: type
         type: row.type,
         //poni: date,
         date_string: row.date,
@@ -58,7 +57,7 @@ export default function getData() {
 
     const speaker_name = createAndAssignSpeakerNames(data);
 
-    const resourceTypes = formatResourceType(data);
+    const type = formatType(data);
 
     const categories = formatCategories(data);
 
@@ -71,8 +70,7 @@ export default function getData() {
       speaker: speaker,
       //speaker without title - for dropdown
       speaker_name: speaker_name,
-      //poni: type
-      resourceTypes: resourceTypes,
+      type: type,
     };
   });
   return dataPromise;
@@ -118,7 +116,7 @@ function formatSpeaker(array) {
   return [...new Set(array.map((el) => el.speaker))];
 }
 
-function formatResourceType(array) {
+function formatType(array) {
   return [...new Set(array.map((el) => el.type))];
 }
 
