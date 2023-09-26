@@ -31,25 +31,25 @@
     const value = val ? val.split("_").join("-") : "all";
     const spanCountActive = document.querySelector(`.options__count--active`);
     const spanCount = document.querySelector(
-      `.options__count[data-count="${value}"]`
+      `.options__count[data-count="${value}"]`,
     );
     spanCountActive.classList.remove("options__count--active");
     spanCount.classList.add(`options__count--active`);
 
     const activeTab = document.querySelector(`.options__btn--tab--active`);
     const tabActivate = document.querySelector(
-      `.options__btn--tab[data-tab="${value}"]`
+      `.options__btn--tab[data-tab="${value}"]`,
     );
     activeTab.classList.remove(
       "options__btn--tab--active",
       "options__btn--tab--Resilience--active",
       "options__btn--tab--Economic-Development--active",
       "options__btn--tab--Emissions-Reduction--active",
-      "options__btn--tab--all--active"
+      "options__btn--tab--all--active",
     );
     tabActivate.classList.add(
       "options__btn--tab--active",
-      `options__btn--tab--${value}--active`
+      `options__btn--tab--${value}--active`,
     );
   }
 
@@ -101,7 +101,7 @@
       selectedAuthority =
         dataset.authority[
           dataset.authority.findIndex((element) =>
-            element.includes(event.detail.value)
+            element.includes(event.detail.value),
           )
         ];
     } else if (selectName === "State") {

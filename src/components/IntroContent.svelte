@@ -25,7 +25,7 @@
   // get top top 3 most referenced speakers
   function getTopThree(obj) {
     const sortable = Object.fromEntries(
-      Object.entries(obj).sort(([, a], [, b]) => b - a)
+      Object.entries(obj).sort(([, a], [, b]) => b - a),
     );
 
     let topThree = [];
