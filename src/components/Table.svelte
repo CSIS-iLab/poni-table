@@ -120,7 +120,7 @@
       icon.classList.remove("sort-icon--active");
     });
     const divActivity = document.querySelector(
-      ".table__cell--header__container__activity"
+      ".table__cell--header__container__activity",
     );
     divActivity.children[1].children[1].classList.add("sort-icon--active");
     // Sync horizontal scroll of table header and table body
