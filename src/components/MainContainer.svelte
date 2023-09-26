@@ -7,7 +7,7 @@
   import Footer from "./Footer.svelte";
 
   export let dataset;
-  let selectedState = "";
+  let selectedCategory = "";
   let selectedResourceType = "";
   let selectedAuthority = "";
   let selectedTags = [];
@@ -21,7 +21,9 @@
         // for Keyword Search
         const filteredActivity = searchText ? searchText : row.activity.title;
         // for dropdowns
-        const filteredState = selectedState ? selectedState : row.state;
+        const filteredCategory = selectedCategory
+          ? selectedCategory
+          : row.category;
         const filteredResource = selectedResourceType
           ? selectedResourceType
           : row.type_of_resource;
@@ -37,14 +39,16 @@
           (row.activity.title
             .toLowerCase()
             .includes(filteredActivity.toLowerCase()) ||
-            row.state.toLowerCase().includes(filteredActivity.toLowerCase()) ||
+            row.category
+              .toLowerCase()
+              .includes(filteredActivity.toLowerCase()) ||
             row.type_of_resource
               .toLowerCase()
               .includes(filteredActivity.toLowerCase()) ||
             row.authority
               .toLowerCase()
               .includes(filteredActivity.toLowerCase())) &&
-          row.state === filteredState &&
+          row.category === filteredCategory &&
           row.type_of_resource === filteredResource &&
           row.authority === filteredAuthority &&
           filteredTags
@@ -74,7 +78,7 @@
       bind:row
       bind:selectedAuthority
       bind:selectedResourceType
-      bind:selectedState
+      bind:selectedCategory
       bind:selectedTags
       bind:searchText
     />

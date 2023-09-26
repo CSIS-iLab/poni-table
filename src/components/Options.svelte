@@ -7,7 +7,7 @@
 
   export let dataset;
   export let filteredData;
-  export let selectedState;
+  export let selectedCategory;
   export let selectedResourceType;
   export let selectedAuthority;
   export let selectedTags;
@@ -19,8 +19,8 @@
   console.log(dataset);
 
   const eventTotal = dataset.data.length;
-  function getPGCount(state) {
-    return dataset.data.filter((row) => row.state.includes(state)).length;
+  function getPGCount(category) {
+    return dataset.data.filter((row) => row.category.includes(category)).length;
   }
 
   const optionIdentifier = "value";
@@ -104,13 +104,13 @@
             element.includes(event.detail.value),
           )
         ];
-    } else if (selectName === "State") {
+    } else if (selectName === "Category") {
       if (event.target == null) {
         updateActiveTab(event.detail.value);
-        selectedState = event.detail.value;
+        selectedCategory = event.detail.value;
       } else {
         updateActiveTab(event.target.value);
-        selectedState = event.target.value;
+        selectedCategory = event.target.value;
       }
     } else if (selectName == "ResourceType") {
       selectedResourceType = event.detail.value;
@@ -126,8 +126,8 @@
       switchRowBottomLine();
     }
     console.log(selectName);
-    if (selectName === "State") {
-      selectedState = "";
+    if (selectName === "Category") {
+      selectedCategory = "";
       updateActiveTab("");
     } else if (selectName === "Authority") {
       selectedAuthority = "";
@@ -143,7 +143,7 @@
     '<svg class="iconDown" width="16" height="10" viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg"><path d="m0 0 14 15L28 0H0z" fill="#000"/></svg>';
   let chevron = chevronDown;
   let isListOpen = false;
-  let listStateOpen = false;
+  let listCategoryOpen = false;
 
   $: chevron = isListOpen ? chevronUp : chevronDown;
 
@@ -218,21 +218,23 @@
     <button
       class="options__btn options__btn--tab options__btn--tab--all options__btn--tab--active options__btn--tab--all--active"
       data-tab={"all"}
-      on:click={(event) => handleSelect(event, "State")}
+      on:click={(event) => handleSelect(event, "Category")}
       >All <span
         data-count={"all"}
         class="options__count options__count--active">{eventTotal}</span
       >
     </button>
-    {#each dataset.states as state}
+    {#each dataset.categories as category}
       <button
-        class="options__btn options__btn--tab options__btn--tab--{state} "
-        data-tab={state}
-        value={state}
-        on:click={(event) => handleSelect(event, "State")}
-        >{state}
-        <span data-count={state} class="options__count options__count--{state}"
-          >{getPGCount(state)}</span
+        class="options__btn options__btn--tab options__btn--tab--{category} "
+        data-tab={category}
+        value={category}
+        on:click={(event) => handleSelect(event, "Category")}
+        >{category}
+        <span
+          data-count={category}
+          class="options__count options__count--{category}"
+          >{getPGCount(category)}</span
         >
       </button>
     {/each}
@@ -250,10 +252,10 @@
       showChevron={true}
       {optionIdentifier}
       {labelIdentifier}
-      items={dataset.states}
+      items={dataset.categories}
       placeholder="Select a category"
-      on:select={(event) => handleSelect(event, "State")}
-      on:clear={() => handleClear("State")}
+      on:select={(event) => handleSelect(event, "Category")}
+      on:clear={() => handleClear("Category")}
     />
   </div>
   <!--Speaker (authority)-->

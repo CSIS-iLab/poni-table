@@ -44,9 +44,9 @@ export default function getData() {
           key_moment: row.key_moment,
         },
         //poni: category
-        state: row.category,
+        category: row.category,
         //poni: category
-        state_name: row.category_name,
+        category_name: row.category_name,
         //poni: speaker
         authority: row.speaker,
         authority_name: "",
@@ -65,13 +65,13 @@ export default function getData() {
 
     const resourceTypes = formatResourceType(data);
 
-    const states = formatStates(data);
+    const categories = formatCategories(data);
 
     const dates = createAndAssignDateObjects(data);
     return {
       data: data,
       //poni: category
-      states: states,
+      categories: categories,
       dates: dates,
       tags: tags.map((tagName) => tagName.split("_").join(" ")),
       //poni: speaker
@@ -129,13 +129,13 @@ function formatResourceType(array) {
   return [...new Set(array.map((el) => el.type_of_resource))];
 }
 
-function formatStates(array) {
-  // return [...new Set(row.map((r) => r.state))].map((state) => {
+function formatCategories(array) {
+  // return [...new Set(row.map((r) => r.category))].map((category) => {
   //   return {
-  //     name: row.find((r) => r.state === state).state_name,
-  //     value: row.find((r) => r.state === state).state,
+  //     name: row.find((r) => r.category === category).category_name,
+  //     value: row.find((r) => r.category === category).category,
   //   };
   // });
 
-  return [...new Set(array.map((el) => el.state))];
+  return [...new Set(array.map((el) => el.category))];
 }

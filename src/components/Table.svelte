@@ -12,7 +12,7 @@
   const sortByColumns = [
     "date",
     "activity",
-    "state",
+    "category",
     "authority",
     "type of resource",
   ];
@@ -44,7 +44,7 @@
   const headerNames = [
     "Activity",
     "Date",
-    "State",
+    "Category",
     "Authority",
     "Type of Resource",
     "Tags",
@@ -210,7 +210,7 @@
             >
             <!-- event category -->
             <td class="table__body__cell table__body__cell--data"
-              >{rows.state}</td
+              >{rows.category}</td
             >
             <!-- event speaker -->
             <td class="table__body__cell table__body__cell--data"
