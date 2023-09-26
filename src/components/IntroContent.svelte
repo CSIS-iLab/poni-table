@@ -3,25 +3,18 @@
 
   export let filteredData;
   let authorities = [];
-  let tags = [];
   const totalEntries = filteredData.length;
 
-  function getMostReferencedAuthorities() {
+  // for  bar chart at the top of the page
+  function getMostReferencedSpeakers() {
     filteredData.forEach((element) => {
-      authorities.push(element.authority);
+      if (element.authority != "") {
+        authorities.push(element.authority);
+      }
     });
     return countOccurences(authorities);
   }
-
-  function getTopTags() {
-    filteredData.forEach((element) => {
-      element.tags.forEach((tag) => {
-        tags.push(tag);
-      });
-    });
-    return countOccurences(tags);
-  }
-
+  // get MostReferencedSpeakers count
   function countOccurences(array) {
     const counts = {};
     array.forEach(function (x) {
@@ -29,7 +22,7 @@
     });
     return getTopThree(counts);
   }
-
+  // get top top 3 most referenced speakers
   function getTopThree(obj) {
     const sortable = Object.fromEntries(
       Object.entries(obj).sort(([, a], [, b]) => b - a)
@@ -46,8 +39,7 @@
     return topThree;
   }
 
-  const topTags = getTopTags();
-  const mostReferencedAuhorities = getMostReferencedAuthorities();
+  const mostReferencedSpeakers = getMostReferencedSpeakers();
 </script>
 
 <div class="wrapper">
@@ -76,50 +68,25 @@
   <div class="container">
     <div class="intro-content__graphs">
       <div class="intro-bar">
-        <div class="intro-bar__title">Most Referenced Authorities</div>
+        <div class="intro-bar__title">Most Referenced Speakers</div>
         <div class="intro-bar__content">
           <div class="intro-bar__column--labels">
-            <!-- iterate and add the most refereced authorities -->
-            {#each mostReferencedAuhorities as authority}
-              <div><span>{Object.keys(authority)}</span></div>
+            <!-- iterate and add the mostReferencedSpeakers to chart -->
+            {#each mostReferencedSpeakers as speaker}
+              <div><span>{Object.keys(speaker)}</span></div>
             {/each}
           </div>
           <div
             class="intro-bar__column--bars"
             data-total-entries={totalEntries}
           >
-            <!-- iterate and add the most refereced authorities values -->
-            {#each mostReferencedAuhorities as authority}
+            <!-- iterate and add the mostReferencedSpeakers values -->
+            {#each mostReferencedSpeakers as speaker}
               <div class="bar">
                 <span
-                  style="width: {(Object.values(authority) / totalEntries) *
+                  style="width: {(Object.values(speaker) / totalEntries) *
                     100}%"
-                />{Object.values(authority)}
-              </div>
-            {/each}
-          </div>
-        </div>
-      </div>
-
-      <div class="intro-bar">
-        <div class="intro-bar__title">Top Tags</div>
-        <div class="intro-bar__content">
-          <div class="intro-bar__column--labels">
-            <!-- iterate and add the top tags -->
-            {#each topTags as tag}
-              <div><span>{Object.keys(tag)}</span></div>
-            {/each}
-          </div>
-          <div
-            class="intro-bar__column--bars"
-            data-total-entries={totalEntries}
-          >
-            <!-- iterate and add the top tags values -->
-            {#each topTags as tag}
-              <div class="bar">
-                <span
-                  style="width:  {(Object.values(tag) / totalEntries) * 100}%"
-                />{Object.values(tag)}
+                />{Object.values(speaker)}
               </div>
             {/each}
           </div>

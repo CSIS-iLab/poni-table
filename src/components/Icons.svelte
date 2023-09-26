@@ -4,9 +4,9 @@
 </script>
 
 <svg id={$$props.id} class={$$props.class} {focusable}>
-  <use href={`assets/static/icons.svg#${name}`}/>
+  <use href={`assets/static/icons.svg#${name}`} />
 </svg>
 
-<style lang='scss'>
-  @use '../scss/components/icon.scss';
+<style lang="scss">
+  @use "../scss/components/icon.scss";
 </style>
