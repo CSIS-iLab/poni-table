@@ -58,6 +58,10 @@ Write clear and concise commit messages describing the changes you are making an
 
 This project uses the [BEM](http://getbem.com/introduction/) naming convention.
 
+### Formatting
+
+This project uses [Prettier](https://prettier.io/) and the [Prettier plugin for Svelte](https://github.com/sveltejs/prettier-plugin-svelte) for consistent formatting.
+
 ### Copyright / License
 
 Copyright © 2022 CSIS iDeas Lab under the [License](LICENSE).
