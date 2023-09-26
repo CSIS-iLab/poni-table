@@ -45,7 +45,6 @@ export default function getData() {
         },
         category: row.category,
         category_name: row.category_name,
-        //poni: speaker
         speaker: row.speaker,
         speaker_name: "",
         //poni: type
