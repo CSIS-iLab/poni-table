@@ -52,22 +52,18 @@
 
 <div class="wrapper">
   <main class="container intro-content">
-    <p class="intro-content__overline--small">
-      Clean Resilient States Initiative
-    </p>
     <p class="intro-content__overline--regular">
-      by the Energy Security and Climate Change Program
+      By the Project on Nuclear Issues
     </p>
-    <h1 class="intro-content__title">
-      Template for a database SPA
-    </h1>
+    <h1 class="intro-content__title">Russian Nuclear Threats Timeline</h1>
     <p class="intro-content__introduction">
-      A curated database of state-level activities facilitating emissions
-      reductions, positive economic outcomes, and climate resilience—from the <a
+      A curated database of events illustrating the evolution of nuclear threats
+      in the leadup to - and throughout the first year of - the War in Ukraine.
+      From the <a
         class="intro-content__link"
-        href="https://www.csis.org/programs/energy-security-and-climate-change-program/projects/clean-resilient-states-initiative"
-        target="_blank">Clean Resilient States Initiative</a
-      >, created by the CSIS Energy Security & Climate Change Program.
+        href="https://www.csis.org/programs/international-security-program/project-nuclear-issues"
+        target="_blank">CSIS Project on Nuclear Issues</a
+      >.
     </p>
     <p class="intro-content__more">
       <a class="intro-content__link intro-content__link--more" href="#about"
@@ -78,7 +74,7 @@
     </p>
   </main>
   <div class="container">
-    <div class="intro-content__graphs ">
+    <div class="intro-content__graphs">
       <div class="intro-bar">
         <div class="intro-bar__title">Most Referenced Authorities</div>
         <div class="intro-bar__content">
