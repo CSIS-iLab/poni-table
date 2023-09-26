@@ -26,7 +26,7 @@
           : row.category;
         const filteredResource = selectedResourceType
           ? selectedResourceType
-          : row.type_of_resource;
+          : row.type;
         const filteredSpeaker = selectedSpeaker ? selectedSpeaker : row.speaker;
         const filteredTags =
           selectedTags.length > 0
@@ -40,14 +40,12 @@
             row.category
               .toLowerCase()
               .includes(filteredActivity.toLowerCase()) ||
-            row.type_of_resource
-              .toLowerCase()
-              .includes(filteredActivity.toLowerCase()) ||
+            row.type.toLowerCase().includes(filteredActivity.toLowerCase()) ||
             row.speaker
               .toLowerCase()
               .includes(filteredActivity.toLowerCase())) &&
           row.category === filteredCategory &&
-          row.type_of_resource === filteredResource &&
+          row.type === filteredResource &&
           row.speaker === filteredSpeaker &&
           filteredTags
         );

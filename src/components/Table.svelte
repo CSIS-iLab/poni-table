@@ -218,7 +218,7 @@
             >
             <!-- event type -->
             <td class="table__body__cell table__body__cell--data"
-              >{rows.type_of_resource}</td
+              >{rows.type}</td
             >
             <td
               class="table__body__cell table__body__cell--data table__body__cell__icon-container"

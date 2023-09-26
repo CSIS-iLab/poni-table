@@ -46,7 +46,7 @@ export default function getData() {
         speaker: row.speaker,
         speaker_name: "",
         //poni: type
-        type_of_resource: row.type,
+        type: row.type,
         //poni: date,
         date_string: row.date,
         date: "",
@@ -119,7 +119,7 @@ function formatSpeaker(array) {
 }
 
 function formatResourceType(array) {
-  return [...new Set(array.map((el) => el.type_of_resource))];
+  return [...new Set(array.map((el) => el.type))];
 }
 
 function formatCategories(array) {
