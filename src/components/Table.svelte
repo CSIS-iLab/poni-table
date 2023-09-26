@@ -238,7 +238,7 @@
           <tr class="extra-content hide">
             <td class="table__body__cell" colspan="6">
               <div class="extra-content__container">
-                <div class="description">{rows.activity.description}</div>
+                <div class="description">{rows.activity.quote}</div>
                 <div class="link">
                   <a
                     href={rows.activity.link}

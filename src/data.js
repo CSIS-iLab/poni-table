@@ -28,10 +28,8 @@ export default function getData() {
           .filter((tagName) => row[tagName])
           .map((tagName) => tagName.split("_").join(" ")),
         activity: {
-          //poni: title
           title: row.title,
-          //poni: quote
-          description: row.quote,
+          quote: row.quote,
           //poni: source_1
           link: row.source_1,
           vpn_required_1: row.vpn_required_1,
