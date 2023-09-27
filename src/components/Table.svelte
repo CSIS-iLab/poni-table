@@ -245,14 +245,49 @@
                   <span><b>Photo Credit:</b> {rows.activity.image_source}</span>
                 {/if}
                 <div class="link">
+                  {#if rows.activity.source_1 }
                   <a
                     href={rows.activity.source_1}
                     target="_blank"
                     rel="noopener noreferrer"
                     >Go to resource<span class="icon-container"
                       ><Icon name="Icon-open-blank" class="icon" /></span
-                    ></a
-                  >
+                    >
+                  </a>
+                    <span class="icon-tag-container"
+                      use:tooltip={{ theme: "energy" }}
+                      aria-hidden="true"
+                      aria-label={rows.activity.vpn_required_1}
+                      ><Icon name="Icon-info-alt" class="icon" /></span>
+                  {/if}
+                  {#if rows.activity.source_2 }
+                  <a
+                    href={rows.activity.source_2}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    >Go to resource<span class="icon-container"
+                      ><Icon name="Icon-open-blank" class="icon" /></span
+                    ></a>
+                    <span class="icon-tag-container"
+                      use:tooltip={{ theme: "energy" }}
+                      aria-hidden="true"
+                      aria-label={rows.activity.vpn_required_2}
+                      ><Icon name="Icon-info-alt" class="icon" /></span>
+                  {/if}
+                  {#if rows.activity.source_3 }
+                  <a
+                    href={rows.activity.source_3}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    >Go to resource<span class="icon-container"
+                      ><Icon name="Icon-open-blank" class="icon" /></span
+                    ></a>
+                    <span class="icon-tag-container"
+                      use:tooltip={{ theme: "energy" }}
+                      aria-hidden="true"
+                      aria-label={rows.activity.vpn_required_3}
+                      ><Icon name="Icon-info-alt" class="icon" /></span>
+                  {/if}
                 </div>
               </div>
             </td>

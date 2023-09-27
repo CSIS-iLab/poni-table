@@ -32,7 +32,7 @@ export default function getData() {
           quote: row.quote,
           //poni: source_1
           source_1: row.source_1,
-          vpn_required_1: row.vpn_required_1,
+          vpn_required_1: (row.vpn_required_1) ? 'You required a VPN to access this source' : null,
           source_2: row.source_2,
           vpn_required_2: row.vpn_required_2,
           source_3: row.source_3,
