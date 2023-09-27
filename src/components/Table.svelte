@@ -47,7 +47,6 @@
     "Category",
     "Speaker",
     "Type of Resource",
-    "Tags",
   ]
 
   $: sortBy = { col: "activity", ascending: true }
@@ -108,6 +107,10 @@
 
     //Sort by activity title
     if (column == "activity") {
+      console.log(
+        "filteredData",
+        (filteredData = filteredData.sort(sortActivity)),
+      )
       return (filteredData = filteredData.sort(sortActivity))
     }
 
@@ -220,19 +223,6 @@
             <td class="table__body__cell table__body__cell--data"
               >{rows.type}</td
             >
-            <td
-              class="table__body__cell table__body__cell--data table__body__cell__icon-container"
-            >
-              {#each rows.tags as tag}
-                <span
-                  class="icon-tag-container"
-                  use:tooltip={{ theme: "energy" }}
-                  aria-hidden="true"
-                  aria-label={tag}
-                  ><Icon name="icon {tag}" class="icon__tags" /></span
-                >
-              {/each}
-            </td>
           </tr>
           <!--this tr is the stuff under the dropdown -->
           <tr class="extra-content hide">
@@ -240,8 +230,12 @@
               <div class="extra-content__container">
                 <div class="description">{rows.activity.quote}</div>
                 {#if rows.activity.image_url && rows.activity.image_source}
-                <!-- TODO: add styles for img and the photo credit -->
-                  <img loading="lazy" src="{rows.activity.image_url}" alt="{rows.activity.image_source}" />
+                  <!-- TODO: add styles for img and the photo credit -->
+                  <img
+                    loading="lazy"
+                    src={rows.activity.image_url}
+                    alt={rows.activity.image_source}
+                  />
                   <span><b>Photo Credit:</b> {rows.activity.image_source}</span>
                 {/if}
                 <div class="link">

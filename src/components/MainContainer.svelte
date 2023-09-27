@@ -1,35 +1,30 @@
 <script>
-  import Header from "./Header.svelte";
-  import IntroContent from "./IntroContent.svelte";
-  import Options from "./Options.svelte";
-  import Table from "./Table.svelte";
-  import About from "./About.svelte";
-  import Footer from "./Footer.svelte";
+  import Header from "./Header.svelte"
+  import IntroContent from "./IntroContent.svelte"
+  import Options from "./Options.svelte"
+  import Table from "./Table.svelte"
+  import About from "./About.svelte"
+  import Footer from "./Footer.svelte"
 
-  export let dataset;
-  let selectedCategory = "";
-  let selectedType = "";
-  let selectedSpeaker = "";
-  let selectedTags = [];
-  let searchText;
-  $: row = { isOpen: false };
+  export let dataset
+  let selectedCategory = ""
+  let selectedType = ""
+  let selectedSpeaker = ""
+  let searchText
+  $: row = { isOpen: false }
 
   $: filteredData = () => {
     return dataset.data
       .filter((row) => {
         //console.log(row);
         // for Keyword Search
-        const filteredActivity = searchText ? searchText : row.activity.title;
+        const filteredActivity = searchText ? searchText : row.activity.title
         // for dropdowns
         const filteredCategory = selectedCategory
           ? selectedCategory
-          : row.category;
-        const filteredResource = selectedType ? selectedType : row.type;
-        const filteredSpeaker = selectedSpeaker ? selectedSpeaker : row.speaker;
-        const filteredTags =
-          selectedTags.length > 0
-            ? row.tags.some((tag) => selectedTags.includes(tag))
-            : row.tags;
+          : row.category
+        const filteredResource = selectedType ? selectedType : row.type
+        const filteredSpeaker = selectedSpeaker ? selectedSpeaker : row.speaker
 
         return (
           (row.activity.title
@@ -44,20 +39,19 @@
               .includes(filteredActivity.toLowerCase())) &&
           row.category === filteredCategory &&
           row.type === filteredResource &&
-          row.speaker === filteredSpeaker &&
-          filteredTags
-        );
+          row.speaker === filteredSpeaker
+        )
       })
       .sort((a, b) => {
         if (a.date < b.date) {
-          return -1;
+          return -1
         } else if (a.date > b.date) {
-          return 1;
+          return 1
         } else {
-          return 0;
+          return 0
         }
-      });
-  };
+      })
+  }
 </script>
 
 <div id="site-content">
@@ -73,7 +67,6 @@
       bind:selectedSpeaker
       bind:selectedType
       bind:selectedCategory
-      bind:selectedTags
       bind:searchText
     />
 
