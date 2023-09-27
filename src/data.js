@@ -1,7 +1,7 @@
-import * as d3Fetch from "d3-fetch";
+import * as d3Fetch from "d3-fetch"
 
 const URL =
-  "https://docs.google.com/spreadsheets/d/e/2PACX-1vRq1A_i1wvnY0cPdInPbf50cgeiJOPF-B_iEROEzpvrMYM7O_k_Ee3qy8lhLitG60Q_oy2G6961yd_G/pub?output=csv";
+  "https://docs.google.com/spreadsheets/d/e/2PACX-1vRq1A_i1wvnY0cPdInPbf50cgeiJOPF-B_iEROEzpvrMYM7O_k_Ee3qy8lhLitG60Q_oy2G6961yd_G/pub?output=csv"
 
 const tags = [
   "Anticipating_Climate_Impacts",
@@ -16,7 +16,7 @@ const tags = [
   "Distributed_Energy_Resources_(DERs)",
   "Technology_or_System_Standards",
   "Workforce_Development",
-];
+]
 
 export default function getData() {
   const dataPromise = d3Fetch.csv(URL).then((res) => {
@@ -49,19 +49,19 @@ export default function getData() {
         //poni: date,
         date_string: row.date,
         date: "",
-      };
-    });
+      }
+    })
 
-    console.log("Data", data);
-    const speaker = formatSpeaker(data);
+    console.log("Data", data)
+    const speaker = formatSpeaker(data)
 
-    const speaker_name = createAndAssignSpeakerNames(data);
+    const speaker_name = createAndAssignSpeakerNames(data)
 
-    const type = formatType(data);
+    const type = formatType(data)
 
-    const categories = formatCategories(data);
+    const categories = formatCategories(data)
 
-    const dates = createAndAssignDateObjects(data);
+    const dates = createAndAssignDateObjects(data)
     return {
       data: data,
       categories: categories,
@@ -71,53 +71,53 @@ export default function getData() {
       //speaker without title - for dropdown
       speaker_name: speaker_name,
       type: type,
-    };
-  });
-  return dataPromise;
+    }
+  })
+  return dataPromise
 }
 
 function createAndAssignSpeakerNames(array) {
-  let speaker_Name_Array = [];
+  let speaker_Name_Array = []
 
   for (let i = 0; i < array.length; i++) {
-    let name = array[i].speaker.split(",")[0];
+    let name = array[i].speaker.split(",")[0]
     if (array[i].speaker != "") {
-      array[i].speaker_name = name;
+      array[i].speaker_name = name
 
       if (!speaker_Name_Array.includes(name)) {
-        speaker_Name_Array.push(name);
+        speaker_Name_Array.push(name)
       }
     }
   }
 
-  return speaker_Name_Array;
+  return speaker_Name_Array
 }
 
 function createAndAssignDateObjects(array) {
-  let dates = [];
-  let date_string = [];
+  let dates = []
+  let date_string = []
 
   for (let i = 0; i < array.length; i++) {
-    let date = array[i].date_string;
+    let date = array[i].date_string
 
-    let dateObject = new Date(date);
-    array[i].date = dateObject;
+    let dateObject = new Date(date)
+    array[i].date = dateObject
 
     if (!date_string.includes(array[i].date_string)) {
-      date_string.push(array[i].date_string);
-      dates.push(dateObject);
+      date_string.push(array[i].date_string)
+      dates.push(dateObject)
     }
   }
 
-  return dates;
+  return dates
 }
 
 function formatSpeaker(array) {
-  return [...new Set(array.map((el) => el.speaker))];
+  return [...new Set(array.map((el) => el.speaker))]
 }
 
 function formatType(array) {
-  return [...new Set(array.map((el) => el.type))];
+  return [...new Set(array.map((el) => el.type))]
 }
 
 function formatCategories(array) {
@@ -128,5 +128,5 @@ function formatCategories(array) {
   //   };
   // });
 
-  return [...new Set(array.map((el) => el.category))];
+  return [...new Set(array.map((el) => el.category))]
 }

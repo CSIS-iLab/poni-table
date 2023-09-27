@@ -1,13 +1,13 @@
 <script>
-  import { onMount } from "svelte";
-  import tooltip from "../js/tooltip";
-  import Icon from "./Icons.svelte";
+  import { onMount } from "svelte"
+  import tooltip from "../js/tooltip"
+  import Icon from "./Icons.svelte"
 
-  export let filteredData;
-  export let row;
+  export let filteredData
+  export let row
 
-  let sortIconContainer;
-  $: sortClass = "inactive";
+  let sortIconContainer
+  $: sortClass = "inactive"
 
   const sortByColumns = [
     "date",
@@ -15,30 +15,30 @@
     "category",
     "speaker",
     "type of resource",
-  ];
+  ]
 
   function handleClick(e) {
-    let title = undefined;
-    let currentRow = undefined;
-    let extraContent = undefined;
+    let title = undefined
+    let currentRow = undefined
+    let extraContent = undefined
 
     if (e.target.parentNode.classList.contains("title")) {
-      title = e.target.parentNode;
-      currentRow = title.nextElementSibling;
-      extraContent = e.target.parentNode.nextElementSibling;
+      title = e.target.parentNode
+      currentRow = title.nextElementSibling
+      extraContent = e.target.parentNode.nextElementSibling
     } else {
-      title = e.target.parentNode.parentNode;
-      currentRow = title.nextElementSibling;
-      extraContent = e.target.parentNode.parentNode.nextElementSibling;
+      title = e.target.parentNode.parentNode
+      currentRow = title.nextElementSibling
+      extraContent = e.target.parentNode.parentNode.nextElementSibling
     }
 
-    title.classList.toggle("title--active");
-    title.classList.toggle("table__body__cell--border");
-    currentRow.classList.toggle("table__body__cell--border");
+    title.classList.toggle("title--active")
+    title.classList.toggle("table__body__cell--border")
+    currentRow.classList.toggle("table__body__cell--border")
     // Show/Hide extraContent
-    extraContent.classList.toggle("active");
-    extraContent.classList.toggle("hide");
-    row.isOpen ? (row.isOpen = true) : (row.isOpen = !row.isOpen);
+    extraContent.classList.toggle("active")
+    extraContent.classList.toggle("hide")
+    row.isOpen ? (row.isOpen = true) : (row.isOpen = !row.isOpen)
   }
 
   const headerNames = [
@@ -48,27 +48,27 @@
     "Speaker",
     "Type of Resource",
     "Tags",
-  ];
+  ]
 
-  $: sortBy = { col: "activity", ascending: true };
+  $: sortBy = { col: "activity", ascending: true }
 
   $: sort = (e, column) => {
-    column = column.toLowerCase().replace(/\s/g, "_"); // replace spaces using regex with undesrscore
-    const iconsActive = document.querySelectorAll(".sort-icon--active");
+    column = column.toLowerCase().replace(/\s/g, "_") // replace spaces using regex with undesrscore
+    const iconsActive = document.querySelectorAll(".sort-icon--active")
     iconsActive.forEach((icon) => {
-      icon.classList.remove("sort-icon--active");
-    });
+      icon.classList.remove("sort-icon--active")
+    })
     if (sortBy.col == column) {
-      sortBy.ascending = !sortBy.ascending;
-      sortClass = sortBy.ascending ? "active" : "inactive";
+      sortBy.ascending = !sortBy.ascending
+      sortClass = sortBy.ascending ? "active" : "inactive"
     } else {
-      sortClass = "inactive";
-      sortBy.col = column;
-      sortBy.ascending = true;
+      sortClass = "inactive"
+      sortBy.col = column
+      sortBy.ascending = true
     }
 
     // Modifier to sorting function for ascending or descending
-    let sortModifier = sortBy.ascending ? 1 : -1;
+    let sortModifier = sortBy.ascending ? 1 : -1
 
     // current function - does NOT also sort by date,
     // only puts event titles in alpha order
@@ -77,7 +77,7 @@
         ? -1 * sortModifier
         : a.activity.title > b.activity.title
         ? 1 * sortModifier
-        : 0;
+        : 0
 
     // possible option - will sort by date, and then
     // within that date, sort events by alpha order
@@ -85,63 +85,63 @@
     // then dates 02/01/22 - 02/28/22 are in alpha order.
     // not called right now -- user probably expects only alpha sort
     let sortByNameThenDate = (a, b) => {
-      let rv = a.date - b.date;
+      let rv = a.date - b.date
       if (rv === 0) {
-        rv = a.activity.title.localeCompare(b.activity.title);
+        rv = a.activity.title.localeCompare(b.activity.title)
       }
-      return rv;
-    };
+      return rv
+    }
 
     let sortDate = (a, b) =>
       a.date < b.date
         ? -1 * sortModifier
         : a.date > b.date
         ? 1 * sortModifier
-        : 0;
+        : 0
 
     let sortColumnName = (a, b) =>
       a[column] < b[column]
         ? -1 * sortModifier
         : a[column] > b[column]
         ? 1 * sortModifier
-        : 0;
+        : 0
 
     //Sort by activity title
     if (column == "activity") {
-      return (filteredData = filteredData.sort(sortActivity));
+      return (filteredData = filteredData.sort(sortActivity))
     }
 
-    filteredData = filteredData.sort(sortDate).sort(sortColumnName);
-  };
+    filteredData = filteredData.sort(sortDate).sort(sortColumnName)
+  }
 
   onMount(() => {
-    const iconsActive = document.querySelectorAll(".sort-icon--active");
+    const iconsActive = document.querySelectorAll(".sort-icon--active")
     iconsActive.forEach((icon) => {
-      icon.classList.remove("sort-icon--active");
-    });
+      icon.classList.remove("sort-icon--active")
+    })
     const divActivity = document.querySelector(
       ".table__cell--header__container__activity",
-    );
-    divActivity.children[1].children[1].classList.add("sort-icon--active");
+    )
+    divActivity.children[1].children[1].classList.add("sort-icon--active")
     // Sync horizontal scroll of table header and table body
     // Inspired by https://codepen.io/Goweb/pen/rgrjWx
     const scrollSync = () => {
-      const tableHeader = document.querySelector("#table-header");
-      const tableBody = document.querySelector("#table-body");
+      const tableHeader = document.querySelector("#table-header")
+      const tableBody = document.querySelector("#table-body")
 
       const bindSyncScrolling = (one, two) => {
-        let echo = false;
+        let echo = false
         const sync = (elOne, elTwo) => () =>
           (echo = !echo) &&
           ((elOne.scrollTop = elTwo.scrollTop),
-          (elOne.scrollLeft = elTwo.scrollLeft));
-        two.onscroll = sync(one, two);
-        one.onscroll = sync(two, one);
-      };
-      bindSyncScrolling(tableHeader, tableBody);
-    };
-    scrollSync();
-  });
+          (elOne.scrollLeft = elTwo.scrollLeft))
+        two.onscroll = sync(one, two)
+        one.onscroll = sync(two, one)
+      }
+      bindSyncScrolling(tableHeader, tableBody)
+    }
+    scrollSync()
+  })
 </script>
 
 <div class="table__wrapper">
@@ -239,6 +239,11 @@
             <td class="table__body__cell" colspan="6">
               <div class="extra-content__container">
                 <div class="description">{rows.activity.quote}</div>
+                {#if rows.activity.image_url && rows.activity.image_source}
+                <!-- TODO: add styles for img and the photo credit -->
+                  <img loading="lazy" src="{rows.activity.image_url}" alt="{rows.activity.image_source}" />
+                  <span><b>Photo Credit:</b> {rows.activity.image_source}</span>
+                {/if}
                 <div class="link">
                   <a
                     href={rows.activity.source_1}
