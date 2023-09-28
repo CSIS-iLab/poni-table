@@ -1,6 +1,6 @@
 <script>
-  export let name;
-  export let focusable = false;
+  export let name
+  export let focusable = false
 </script>
 
 <svg id={$$props.id} class={$$props.class} {focusable}>
