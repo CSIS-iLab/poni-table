@@ -1,31 +1,13 @@
 import * as d3Fetch from "d3-fetch"
 
 const URL =
-  "https://docs.google.com/spreadsheets/d/e/2PACX-1vRq1A_i1wvnY0cPdInPbf50cgeiJOPF-B_iEROEzpvrMYM7O_k_Ee3qy8lhLitG60Q_oy2G6961yd_G/pub?output=csv"
-
-const tags = [
-  "Anticipating_Climate_Impacts",
-  "Comprehensive_Planning_Grid_Modernization",
-  "Data_Transparency_or_Visualization",
-  "Electric_Vehicles",
-  "Energy_Storage",
-  "Environmental_Justice",
-  "Innovation_and_Clusters",
-  "Local-Level_Planning_or_Support",
-  "Microgrids",
-  "Distributed_Energy_Resources_(DERs)",
-  "Technology_or_System_Standards",
-  "Workforce_Development",
-]
+  "https://docs.google.com/spreadsheets/d/e/2PACX-1vS-_ERImv22VF5VJU8oWN2g9_uQ4LzJr21zOHHtizHHYTuQJvHZHJGaJE6d1DUDifpiPGqmZL4MIbgU/pub?output=csv"
 
 export default function getData() {
   const dataPromise = d3Fetch.csv(URL).then((res) => {
     const data = res.map((row, index) => {
       return {
         id: index,
-        tags: tags
-          .filter((tagName) => row[tagName])
-          .map((tagName) => tagName.split("_").join(" ")),
         activity: {
           title: row.title,
           quote: row.quote,
@@ -63,7 +45,6 @@ export default function getData() {
       data: data,
       categories: categories,
       dates: dates,
-      tags: tags.map((tagName) => tagName.split("_").join(" ")),
       speaker: speaker,
       //speaker without title - for dropdown
       speaker_name: speaker_name,

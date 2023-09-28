@@ -1,99 +1,97 @@
 <script>
-  import { onMount } from "svelte";
-  import Search from "./Search.svelte";
-  import Select from "svelte-select";
-  import SelectMultiple from "./SelectMultiple.svelte";
-  import Icon from "./Icons.svelte";
+  import { onMount } from "svelte"
+  import Search from "./Search.svelte"
+  import Select from "svelte-select"
+  import Icon from "./Icons.svelte"
 
-  export let dataset;
-  export let filteredData;
-  export let selectedCategory;
-  export let selectedType;
-  export let selectedSpeaker;
-  export let selectedTags;
-  export let searchText = "";
-  export let row;
+  export let dataset
+  export let filteredData
+  export let selectedCategory
+  export let selectedType
+  export let selectedSpeaker
+  export let searchText = ""
+  export let row
 
-  $: totalEntries = filteredData.length;
+  $: totalEntries = filteredData.length
 
-  console.log(dataset);
+  console.log(dataset)
 
-  const eventTotal = dataset.data.length;
+  const eventTotal = dataset.data.length
   function getPGCount(category) {
-    return dataset.data.filter((row) => row.category.includes(category)).length;
+    return dataset.data.filter((row) => row.category.includes(category)).length
   }
 
-  const optionIdentifier = "value";
-  const labelIdentifier = "label";
+  const optionIdentifier = "value"
+  const labelIdentifier = "label"
 
   function updateActiveTab(val) {
-    console.log("updateActiveTab val: ", val);
-    const value = val ? val.split("_").join("-") : "all";
-    const spanCountActive = document.querySelector(`.options__count--active`);
+    console.log("updateActiveTab val: ", val)
+    const value = val ? val.split("_").join("-") : "all"
+    const spanCountActive = document.querySelector(`.options__count--active`)
     const spanCount = document.querySelector(
       `.options__count[data-count="${value}"]`,
-    );
-    spanCountActive.classList.remove("options__count--active");
-    spanCount.classList.add(`options__count--active`);
+    )
+    spanCountActive.classList.remove("options__count--active")
+    spanCount.classList.add(`options__count--active`)
 
-    const activeTab = document.querySelector(`.options__btn--tab--active`);
+    const activeTab = document.querySelector(`.options__btn--tab--active`)
     const tabActivate = document.querySelector(
       `.options__btn--tab[data-tab="${value}"]`,
-    );
+    )
     activeTab.classList.remove(
       "options__btn--tab--active",
       "options__btn--tab--Resilience--active",
       "options__btn--tab--Economic-Development--active",
       "options__btn--tab--Emissions-Reduction--active",
       "options__btn--tab--all--active",
-    );
+    )
     tabActivate.classList.add(
       "options__btn--tab--active",
       `options__btn--tab--${value}--active`,
-    );
+    )
   }
 
   function removeRowActiveTitleStyle() {
-    const title = document.querySelectorAll(".title--active");
+    const title = document.querySelectorAll(".title--active")
     title.forEach((item) => {
-      item.classList.remove("title--active");
-    });
+      item.classList.remove("title--active")
+    })
   }
 
   function removeExtraContentStyle() {
-    const extraContent = document.querySelectorAll(".extra-content");
+    const extraContent = document.querySelectorAll(".extra-content")
     extraContent.forEach((content) => {
       if (content.classList.contains("active")) {
-        content.classList.remove("active");
-        content.classList.add("hide");
+        content.classList.remove("active")
+        content.classList.add("hide")
       }
-    });
+    })
   }
 
   function switchRowBottomLine() {
-    const rowTitle = document.querySelectorAll(".title");
-    const extraContent = document.querySelectorAll(".extra-content");
+    const rowTitle = document.querySelectorAll(".title")
+    const extraContent = document.querySelectorAll(".extra-content")
     extraContent.forEach((item) => {
       if (item.classList.contains("table__body__cell--border")) {
-        item.classList.remove("table__body__cell--border");
+        item.classList.remove("table__body__cell--border")
       }
-    });
+    })
     rowTitle.forEach((item) => {
       if (!item.classList.contains("table__body__cell--border")) {
-        item.classList.add("table__body__cell--border");
+        item.classList.add("table__body__cell--border")
       }
-    });
+    })
   }
 
   function handleSelect(event, selectName) {
     //console.log("clicked");
-    console.log("handleselect event.target", event.target);
-    console.log("handleselect event.detail", event.detail);
+    console.log("handleselect event.target", event.target)
+    console.log("handleselect event.detail", event.detail)
     if (row.isOpen) {
-      row.isOpen = !row.isOpen;
-      removeRowActiveTitleStyle();
-      removeExtraContentStyle();
-      switchRowBottomLine();
+      row.isOpen = !row.isOpen
+      removeRowActiveTitleStyle()
+      removeExtraContentStyle()
+      switchRowBottomLine()
     }
     if (selectName === "Speaker") {
       // look through list of dataset.speaker (speakers
@@ -103,109 +101,109 @@
           dataset.speaker.findIndex((element) =>
             element.includes(event.detail.value),
           )
-        ];
+        ]
     } else if (selectName === "Category") {
       if (event.target == null) {
-        updateActiveTab(event.detail.value);
-        selectedCategory = event.detail.value;
+        updateActiveTab(event.detail.value)
+        selectedCategory = event.detail.value
       } else {
-        updateActiveTab(event.target.value);
-        selectedCategory = event.target.value;
+        updateActiveTab(event.target.value)
+        selectedCategory = event.target.value
       }
     } else if (selectName == "Type") {
-      selectedType = event.detail.value;
+      selectedType = event.detail.value
     }
   }
 
   function handleClear(selectName) {
-    console.log("handleClear: ", selectName);
+    console.log("handleClear: ", selectName)
     if (row.isOpen) {
-      row.isOpen = !row.isOpen;
-      removeRowActiveTitleStyle();
-      removeExtraContentStyle();
-      switchRowBottomLine();
+      row.isOpen = !row.isOpen
+      removeRowActiveTitleStyle()
+      removeExtraContentStyle()
+      switchRowBottomLine()
     }
-    console.log(selectName);
+    console.log(selectName)
     if (selectName === "Category") {
-      selectedCategory = "";
-      updateActiveTab("");
+      selectedCategory = ""
+      updateActiveTab("")
     } else if (selectName === "Speaker") {
-      selectedSpeaker = "";
+      selectedSpeaker = ""
     } else {
-      selectedType = "";
+      selectedType = ""
     }
   }
 
   // handle the icon
   const chevronUp =
-    '<svg class="iconUp" width="16" height="10" viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg"><path d="M28 15 14 0 0 15h28z" fill="#000"/></svg>';
+    '<svg class="iconUp" width="16" height="10" viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg"><path d="M28 15 14 0 0 15h28z" fill="#000"/></svg>'
   const chevronDown =
-    '<svg class="iconDown" width="16" height="10" viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg"><path d="m0 0 14 15L28 0H0z" fill="#000"/></svg>';
-  let chevron = chevronDown;
-  let isListOpen = false;
-  let listCategoryOpen = false;
+    '<svg class="iconDown" width="16" height="10" viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg"><path d="m0 0 14 15L28 0H0z" fill="#000"/></svg>'
+  let chevron = chevronDown
+  let isListOpen = false
+  let listCategoryOpen = false
 
-  $: chevron = isListOpen ? chevronUp : chevronDown;
+  $: chevron = isListOpen ? chevronUp : chevronDown
 
   function handleScrollLeft() {
-    const tableContainer = document.getElementById("table-body");
-    const btnIconLeft = document.querySelector("#icon-scroll-left");
-    const btnIconRight = document.querySelector("#icon-scroll-right");
+    const tableContainer = document.getElementById("table-body")
+    const btnIconLeft = document.querySelector("#icon-scroll-left")
+    const btnIconRight = document.querySelector("#icon-scroll-right")
 
-    tableContainer.scrollLeft -= 100;
+    tableContainer.scrollLeft -= 100
     if (btnIconRight.classList.contains("inactive")) {
-      btnIconRight.classList.remove("inactive");
+      btnIconRight.classList.remove("inactive")
     }
     if (tableContainer.scrollLeft === 0) {
-      btnIconLeft.classList.add("inactive");
+      btnIconLeft.classList.add("inactive")
     }
   }
 
   function handleScrollRight() {
-    const tableContainer = document.getElementById("table-body");
-    const table = document.getElementsByClassName("table")[0];
-    const btnIconLeft = document.querySelector("#icon-scroll-left");
-    const btnIconRight = document.querySelector("#icon-scroll-right");
-    tableContainer.scrollLeft += 100;
+    const tableContainer = document.getElementById("table-body")
+    const table = document.getElementsByClassName("table")[0]
+    const btnIconLeft = document.querySelector("#icon-scroll-left")
+    const btnIconRight = document.querySelector("#icon-scroll-right")
+    tableContainer.scrollLeft += 100
     if (btnIconLeft.classList.contains("inactive")) {
-      btnIconLeft.classList.remove("inactive");
+      btnIconLeft.classList.remove("inactive")
     }
     if (
       Math.ceil(tableContainer.scrollLeft) + tableContainer.offsetWidth >=
       table.offsetWidth
     ) {
-      btnIconRight.classList.add("inactive");
+      btnIconRight.classList.add("inactive")
     }
   }
 
   onMount(() => {
-    isListOpen = false;
-    const tableContainer = document.getElementById("table-body");
-    const table = document.getElementsByClassName("table")[0];
-    const btnIconLeft = document.querySelector("#icon-scroll-left");
-    const btnIconRight = document.querySelector("#icon-scroll-right");
+    isListOpen = false
+    const tableContainer = document.getElementById("table-body")
+    const table = document.getElementsByClassName("table")[0]
+    const btnIconLeft = document.querySelector("#icon-scroll-left")
+    const btnIconRight = document.querySelector("#icon-scroll-right")
     tableContainer.addEventListener("scroll", () => {
-      const left = tableContainer.scrollLeft;
+      const left = tableContainer.scrollLeft
       if (left > 0) {
-        btnIconLeft.classList.remove("inactive");
+        btnIconLeft.classList.remove("inactive")
       }
       if (
         Math.ceil(tableContainer.scrollLeft) + tableContainer.offsetWidth + 2 >=
         table.offsetWidth
       ) {
-        btnIconRight.classList.add("inactive");
+        btnIconRight.classList.add("inactive")
       }
       if (
         Math.ceil(tableContainer.scrollLeft) + tableContainer.offsetWidth + 2 <=
         table.offsetWidth
       ) {
-        btnIconRight.classList.remove("inactive");
+        btnIconRight.classList.remove("inactive")
       }
       if (left === 0) {
-        btnIconLeft.classList.add("inactive");
+        btnIconLeft.classList.add("inactive")
       }
-    });
-  });
+    })
+  })
 </script>
 
 <section class="table-container__header">
@@ -286,14 +284,9 @@
       on:clear={(event) => handleClear(event, "Type")}
     />
   </div>
-  <!-- Tags (to be deleted; replace with dates)-->
+  <!-- Old tags dropdown - will fill with dates-->
   <div class="select-container">
-    <div class="label">Tags</div>
-    <SelectMultiple
-      bind:selectedValue={selectedTags}
-      options={dataset.tags}
-      selectName="tags"
-    />
+    <div class="label">Dates</div>
   </div>
 </div>
 
