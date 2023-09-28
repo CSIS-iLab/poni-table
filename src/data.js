@@ -20,7 +20,6 @@ const tags = [
 
 export default function getData() {
   const dataPromise = d3Fetch.csv(URL).then((res) => {
-    //console.log(res);
     const data = res.map((row, index) => {
       return {
         id: index,
@@ -30,13 +29,11 @@ export default function getData() {
         activity: {
           title: row.title,
           quote: row.quote,
-          //poni: source_1
-          source_1: row.source_1,
-          vpn_required_1: row.vpn_required_1,
-          source_2: row.source_2,
-          vpn_required_2: row.vpn_required_2,
-          source_3: row.source_3,
-          vpn_required_3: row.vpn_required_3,
+          sources: [
+            [row.source_1, row.vpn_required_1],
+            [row.source_2, row.vpn_required_2],
+            [row.source_3, row.vpn_required_3],
+          ],
           image_url: row.image_url,
           image_source: row.image_source,
           key_moment: row.key_moment,
@@ -52,7 +49,6 @@ export default function getData() {
       }
     })
 
-    console.log("Data", data)
     const speaker = formatSpeaker(data)
 
     const speaker_name = createAndAssignSpeakerNames(data)
@@ -62,6 +58,7 @@ export default function getData() {
     const categories = formatCategories(data)
 
     const dates = createAndAssignDateObjects(data)
+
     return {
       data: data,
       categories: categories,

@@ -240,19 +240,36 @@
               <div class="extra-content__container">
                 <div class="description">{rows.activity.quote}</div>
                 {#if rows.activity.image_url && rows.activity.image_source}
-                <!-- TODO: add styles for img and the photo credit -->
-                  <img loading="lazy" src="{rows.activity.image_url}" alt="{rows.activity.image_source}" />
+                  <!-- TODO: add styles for img and the photo credit -->
+                  <img
+                    loading="lazy"
+                    src={rows.activity.image_url}
+                    alt={rows.activity.image_source}
+                  />
                   <span><b>Photo Credit:</b> {rows.activity.image_source}</span>
                 {/if}
                 <div class="link">
-                  <a
-                    href={rows.activity.source_1}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    >Go to resource<span class="icon-container"
-                      ><Icon name="Icon-open-blank" class="icon" /></span
-                    ></a
-                  >
+                  {#each rows.activity.sources as source}
+                    {#if source[0] != ""}
+                      <a
+                        href={source[0]}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        >Go to resource<span class="icon-container"
+                          ><Icon name="Icon-open-blank" class="icon" /></span
+                        >
+                      </a>
+                      {#if source[1] == 1}
+                        <span
+                          class="icon-tag-container"
+                          use:tooltip={{ theme: "energy" }}
+                          aria-hidden="true"
+                          aria-label="A vpn is required to view this source."
+                          ><Icon name="Icon-info-alt" class="icon" /></span
+                        >
+                      {/if}
+                    {/if}
+                  {/each}
                 </div>
               </div>
             </td>
