@@ -11,12 +11,11 @@ export default function getData() {
         activity: {
           title: row.title,
           quote: row.quote,
-          source_1: row.source_1,
-          vpn_required_1: row.vpn_required_1,
-          source_2: row.source_2,
-          vpn_required_2: row.vpn_required_2,
-          source_3: row.source_3,
-          vpn_required_3: row.vpn_required_3,
+          sources: [
+            [row.source_1, row.vpn_required_1],
+            [row.source_2, row.vpn_required_2],
+            [row.source_3, row.vpn_required_3],
+          ],
           image_url: row.image_url,
           image_source: row.image_source,
           key_moment: row.key_moment,
