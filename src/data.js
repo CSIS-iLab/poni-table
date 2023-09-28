@@ -3,6 +3,20 @@ import * as d3Fetch from "d3-fetch"
 const URL =
   "https://docs.google.com/spreadsheets/d/e/2PACX-1vS-_ERImv22VF5VJU8oWN2g9_uQ4LzJr21zOHHtizHHYTuQJvHZHJGaJE6d1DUDifpiPGqmZL4MIbgU/pub?output=csv"
 
+const months = [
+  "January",
+  "February",
+  "March",
+  "April",
+  "May",
+  "June",
+  "July",
+  "August",
+  "September",
+  "October",
+  "November",
+  "December",
+]
 export default function getData() {
   const dataPromise = d3Fetch.csv(URL).then((res) => {
     const data = res.map((row, index) => {
@@ -49,6 +63,7 @@ export default function getData() {
       //speaker without title - for dropdown
       speaker_name: speaker_name,
       type: type,
+      months: months,
     }
   })
   return dataPromise

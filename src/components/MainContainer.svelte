@@ -10,13 +10,14 @@
   let selectedCategory = ""
   let selectedType = ""
   let selectedSpeaker = ""
+  let selectedMonth = ""
   let searchText
   $: row = { isOpen: false }
 
   $: filteredData = () => {
     return dataset.data
       .filter((row) => {
-        //console.log(row);
+        console.log("ROW", row)
         // for Keyword Search
         const filteredActivity = searchText ? searchText : row.activity.title
         // for dropdowns
@@ -25,6 +26,7 @@
           : row.category
         const filteredResource = selectedType ? selectedType : row.type
         const filteredSpeaker = selectedSpeaker ? selectedSpeaker : row.speaker
+        const filteredMonth = selectedMonth ? selectedMonth : row.date_string
 
         return (
           (row.activity.title

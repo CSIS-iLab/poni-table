@@ -9,6 +9,7 @@
   export let selectedCategory
   export let selectedType
   export let selectedSpeaker
+  export let selectedMonth
   export let searchText = ""
   export let row
 
@@ -112,6 +113,9 @@
       }
     } else if (selectName == "Type") {
       selectedType = event.detail.value
+    } else if (selectName == "Month") {
+      console.log(event.detail.value)
+      selectedMonth = event.detail.value
     }
   }
 
@@ -129,8 +133,10 @@
       updateActiveTab("")
     } else if (selectName === "Speaker") {
       selectedSpeaker = ""
-    } else {
+    } else if (selectName == "Type") {
       selectedType = ""
+    } else {
+      selectedMonth = ""
     }
   }
 
@@ -242,20 +248,6 @@
 <!-- dropdown filters -->
 
 <div class="selects">
-  <!--Category-->
-  <div class="select-container">
-    <div class="label">Category</div>
-    <Select
-      indicatorSvg={chevron}
-      showChevron={true}
-      {optionIdentifier}
-      {labelIdentifier}
-      items={dataset.categories}
-      placeholder="Select a category"
-      on:select={(event) => handleSelect(event, "Category")}
-      on:clear={() => handleClear("Category")}
-    />
-  </div>
   <!--Speaker-->
   <div class="select-container">
     <div class="label">Speaker</div>
@@ -284,9 +276,33 @@
       on:clear={(event) => handleClear(event, "Type")}
     />
   </div>
-  <!-- Old tags dropdown - will fill with dates-->
+  <!--Month-->
   <div class="select-container">
-    <div class="label">Dates</div>
+    <div class="label">Month</div>
+    <Select
+      indicatorSvg={chevron}
+      showChevron={true}
+      {optionIdentifier}
+      {labelIdentifier}
+      items={dataset.months}
+      placeholder="Select a month"
+      on:select={(event) => handleSelect(event, "Month")}
+      on:clear={() => handleClear(event, "Month")}
+    />
+  </div>
+  <!-- Year-->
+  <div class="select-container">
+    <div class="label">Year</div>
+    <Select
+      indicatorSvg={chevron}
+      showChevron={true}
+      {optionIdentifier}
+      {labelIdentifier}
+      items={dataset.categories}
+      placeholder="Select a year"
+      on:select={(event) => handleSelect(event, "Month")}
+      on:clear={() => handleClear("Month")}
+    />
   </div>
 </div>
 
