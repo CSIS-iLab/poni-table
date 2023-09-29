@@ -10,6 +10,7 @@
   export let selectedType
   export let selectedSpeaker
   export let selectedMonth
+  export let selectedYear
   export let searchText = ""
   export let row
 
@@ -85,49 +86,58 @@
   }
 
   function handleSelect(event, selectName) {
-    //console.log("clicked");
-    console.log("handleselect event.target", event.target)
-    console.log("handleselect event.detail", event.detail)
     if (row.isOpen) {
-      row.isOpen = !row.isOpen
-      removeRowActiveTitleStyle()
-      removeExtraContentStyle()
-      switchRowBottomLine()
+      toggleRowState()
     }
-    if (selectName === "Speaker") {
-      // look through list of dataset.speaker (speakers
-      // with titles) and match to dataset.speaker_name (the selected speaker). feed that speaker to selectedSpeaker.
-      selectedSpeaker =
-        dataset.speaker[
-          dataset.speaker.findIndex((element) =>
-            element.includes(event.detail.value),
-          )
-        ]
-    } else if (selectName === "Category") {
-      if (event.target == null) {
-        updateActiveTab(event.detail.value)
-        selectedCategory = event.detail.value
-      } else {
-        updateActiveTab(event.target.value)
-        selectedCategory = event.target.value
-      }
-    } else if (selectName == "Type") {
-      selectedType = event.detail.value
-    } else if (selectName == "Month") {
-      console.log(event.detail.value)
-      selectedMonth = event.detail.value
+
+    switch (selectName) {
+      case "Speaker":
+        setSelectedSpeaker(event.detail.value)
+        break
+      case "Category":
+        setSelectedCategory(event)
+        break
+      case "Type":
+        selectedType = event.detail.value
+        break
+      case "Month":
+        selectedMonth = event.detail.value
+        break
+      case "Year":
+        selectedYear = event.detail.value
+        break
+      default:
+        console.error("Invalid selectName:", selectName)
     }
   }
 
+  function toggleRowState() {
+    row.isOpen = !row.isOpen
+    removeRowActiveTitleStyle()
+    removeExtraContentStyle()
+    switchRowBottomLine()
+  }
+
+  function setSelectedSpeaker(value) {
+    const index = dataset.speaker.findIndex((element) =>
+      element.includes(value),
+    )
+    selectedSpeaker = dataset.speaker[index]
+  }
+
+  function setSelectedCategory(event) {
+    const value = event.target ? event.target.value : event.detail.value
+    updateActiveTab(value)
+    selectedCategory = value
+  }
+
   function handleClear(selectName) {
-    console.log("handleClear: ", selectName)
     if (row.isOpen) {
       row.isOpen = !row.isOpen
       removeRowActiveTitleStyle()
       removeExtraContentStyle()
       switchRowBottomLine()
     }
-    console.log(selectName)
     if (selectName === "Category") {
       selectedCategory = ""
       updateActiveTab("")
@@ -135,8 +145,10 @@
       selectedSpeaker = ""
     } else if (selectName == "Type") {
       selectedType = ""
-    } else {
+    } else if (selectName == "Month") {
       selectedMonth = ""
+    } else {
+      selectedYear = ""
     }
   }
 
@@ -298,10 +310,10 @@
       showChevron={true}
       {optionIdentifier}
       {labelIdentifier}
-      items={dataset.categories}
+      items={dataset.years}
       placeholder="Select a year"
-      on:select={(event) => handleSelect(event, "Month")}
-      on:clear={() => handleClear("Month")}
+      on:select={(event) => handleSelect(event, "Year")}
+      on:clear={() => handleClear(event, "Year")}
     />
   </div>
 </div>
