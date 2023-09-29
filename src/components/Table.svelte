@@ -199,11 +199,14 @@
         {#each filteredData as rows}
           <tr
             on:click={(e) => handleClick(e)}
-            class="title table__body__cell--border"
+            class="title table__body__cell--border {(rows.key_moment !== null) ? 'key-moment' : '' }"
           >
             <!-- event name/title -->
             <td class="table__body__cell table__body__cell--data"
               ><div class="table__body__cell__title-container">
+                {#if (rows.key_moment !== null) }
+                <span>o</span>
+                {/if}
                 <span class="icon-container" />{rows.activity.title}
               </div></td
             >

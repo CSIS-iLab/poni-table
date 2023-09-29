@@ -20,6 +20,7 @@ export default function getData() {
           image_source: row.image_source,
           key_moment: row.key_moment,
         },
+        key_moment: (row.key_moment) ? row.key_moment : null,
         category: row.category,
         category_name: row.category_name,
         speaker: row.speaker,
