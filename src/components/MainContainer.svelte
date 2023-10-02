@@ -10,47 +10,52 @@
   let selectedCategory = ""
   let selectedType = ""
   let selectedSpeaker = ""
+  let selectedMonth = ""
   let searchText
+  let selectedYear = ""
   $: row = { isOpen: false }
 
   $: filteredData = () => {
     return dataset.data
       .filter((row) => {
-        //console.log(row);
-        // for Keyword Search
-        const filteredActivity = searchText ? searchText : row.activity.title
-        // for dropdowns
-        const filteredCategory = selectedCategory
-          ? selectedCategory
-          : row.category
-        const filteredResource = selectedType ? selectedType : row.type
-        const filteredSpeaker = selectedSpeaker ? selectedSpeaker : row.speaker
+        const rowDate = new Date(row.date_string)
+        const rowYear = rowDate.getFullYear()
+        const rowMonth = rowDate.toLocaleString("default", { month: "long" })
+
+        const matchesYear = selectedYear ? rowYear === selectedYear : true
+        const matchesMonth = selectedMonth ? rowMonth === selectedMonth : true
+        const matchesSpeaker = selectedSpeaker
+          ? row.speaker.trim().toLowerCase() ===
+            selectedSpeaker.trim().toLowerCase()
+          : true
+        const isSelectedCategory = selectedCategory
+          ? row.category === selectedCategory
+          : true
+        const isSelectedType = selectedType ? row.type === selectedType : true
+
+        const filteredActivity = searchText
+          ? searchText.toLowerCase().trim()
+          : ""
+        const matchesText = (text) =>
+          text.toLowerCase().includes(filteredActivity)
+
+        const matchesAnyCondition = [
+          matchesText(row.activity.title),
+          matchesText(row.category),
+          matchesText(row.type),
+          matchesText(row.speaker),
+        ].some(Boolean)
 
         return (
-          (row.activity.title
-            .toLowerCase()
-            .includes(filteredActivity.toLowerCase()) ||
-            row.category
-              .toLowerCase()
-              .includes(filteredActivity.toLowerCase()) ||
-            row.type.toLowerCase().includes(filteredActivity.toLowerCase()) ||
-            row.speaker
-              .toLowerCase()
-              .includes(filteredActivity.toLowerCase())) &&
-          row.category === filteredCategory &&
-          row.type === filteredResource &&
-          row.speaker === filteredSpeaker
+          matchesYear &&
+          matchesMonth &&
+          matchesSpeaker &&
+          matchesAnyCondition &&
+          isSelectedCategory &&
+          isSelectedType
         )
       })
-      .sort((a, b) => {
-        if (a.date < b.date) {
-          return -1
-        } else if (a.date > b.date) {
-          return 1
-        } else {
-          return 0
-        }
-      })
+      .sort((a, b) => (a.date < b.date ? -1 : a.date > b.date ? 1 : 0))
   }
 </script>
 
@@ -68,6 +73,8 @@
       bind:selectedType
       bind:selectedCategory
       bind:searchText
+      bind:selectedMonth
+      bind:selectedYear
     />
 
     <Table filteredData={filteredData()} bind:row />

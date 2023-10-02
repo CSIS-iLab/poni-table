@@ -3,6 +3,21 @@ import * as d3Fetch from "d3-fetch"
 const URL =
   "https://docs.google.com/spreadsheets/d/e/2PACX-1vS-_ERImv22VF5VJU8oWN2g9_uQ4LzJr21zOHHtizHHYTuQJvHZHJGaJE6d1DUDifpiPGqmZL4MIbgU/pub?output=csv"
 
+const months = [
+  "January",
+  "February",
+  "March",
+  "April",
+  "May",
+  "June",
+  "July",
+  "August",
+  "September",
+  "October",
+  "November",
+  "December",
+]
+
 export default function getData() {
   const dataPromise = d3Fetch.csv(URL).then((res) => {
     const data = res.map((row, index) => {
@@ -42,6 +57,8 @@ export default function getData() {
 
     const dates = createAndAssignDateObjects(data)
 
+    const years = createYearList(data)
+
     return {
       data: data,
       categories: categories,
@@ -50,9 +67,26 @@ export default function getData() {
       //speaker without title - for dropdown
       speaker_name: speaker_name,
       type: type,
+      months: months,
+      years: years,
     }
   })
   return dataPromise
+}
+
+function createYearList(data) {
+  // Create a Set to store unique years
+  const uniqueYearsSet = new Set()
+
+  // Loop through each row in the dataset
+  data.forEach((row) => {
+    // Extract the year from the date_string and add it to the Set
+    const year = new Date(row.date_string).getFullYear()
+    uniqueYearsSet.add(year)
+  })
+
+  // Convert the Set of unique years to an array and sort it
+  return Array.from(uniqueYearsSet).sort((a, b) => a - b) // Numeric sort
 }
 
 function createAndAssignSpeakerNames(array) {
@@ -69,7 +103,7 @@ function createAndAssignSpeakerNames(array) {
     }
   }
 
-  return speaker_Name_Array
+  return speaker_Name_Array.sort((a, b) => a.localeCompare(b))
 }
 
 function createAndAssignDateObjects(array) {
@@ -100,12 +134,5 @@ function formatType(array) {
 }
 
 function formatCategories(array) {
-  // return [...new Set(row.map((r) => r.category))].map((category) => {
-  //   return {
-  //     name: row.find((r) => r.category === category).category_name,
-  //     value: row.find((r) => r.category === category).category,
-  //   };
-  // });
-
   return [...new Set(array.map((el) => el.category))]
 }

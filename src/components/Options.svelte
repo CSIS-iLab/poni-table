@@ -9,6 +9,8 @@
   export let selectedCategory
   export let selectedType
   export let selectedSpeaker
+  export let selectedMonth
+  export let selectedYear
   export let searchText = ""
   export let row
 
@@ -84,53 +86,69 @@
   }
 
   function handleSelect(event, selectName) {
-    //console.log("clicked");
-    console.log("handleselect event.target", event.target)
-    console.log("handleselect event.detail", event.detail)
     if (row.isOpen) {
-      row.isOpen = !row.isOpen
-      removeRowActiveTitleStyle()
-      removeExtraContentStyle()
-      switchRowBottomLine()
+      toggleRowState()
     }
-    if (selectName === "Speaker") {
-      // look through list of dataset.speaker (speakers
-      // with titles) and match to dataset.speaker_name (the selected speaker). feed that speaker to selectedSpeaker.
-      selectedSpeaker =
-        dataset.speaker[
-          dataset.speaker.findIndex((element) =>
-            element.includes(event.detail.value),
-          )
-        ]
-    } else if (selectName === "Category") {
-      if (event.target == null) {
-        updateActiveTab(event.detail.value)
-        selectedCategory = event.detail.value
-      } else {
-        updateActiveTab(event.target.value)
-        selectedCategory = event.target.value
-      }
-    } else if (selectName == "Type") {
-      selectedType = event.detail.value
+
+    switch (selectName) {
+      case "Speaker":
+        setSelectedSpeaker(event.detail.value)
+        break
+      case "Category":
+        setSelectedCategory(event)
+        break
+      case "Type":
+        selectedType = event.detail.value
+        break
+      case "Month":
+        selectedMonth = event.detail.value
+        break
+      case "Year":
+        selectedYear = event.detail.value
+        break
+      default:
+        console.error("Invalid selectName:", selectName)
     }
   }
 
+  function toggleRowState() {
+    row.isOpen = !row.isOpen
+    removeRowActiveTitleStyle()
+    removeExtraContentStyle()
+    switchRowBottomLine()
+  }
+
+  function setSelectedSpeaker(value) {
+    const index = dataset.speaker.findIndex((element) =>
+      element.includes(value),
+    )
+    selectedSpeaker = dataset.speaker[index]
+  }
+
+  function setSelectedCategory(event) {
+    const value = event.target ? event.target.value : event.detail.value
+    updateActiveTab(value)
+    selectedCategory = value
+  }
+
   function handleClear(selectName) {
-    console.log("handleClear: ", selectName)
     if (row.isOpen) {
       row.isOpen = !row.isOpen
       removeRowActiveTitleStyle()
       removeExtraContentStyle()
       switchRowBottomLine()
     }
-    console.log(selectName)
     if (selectName === "Category") {
       selectedCategory = ""
       updateActiveTab("")
     } else if (selectName === "Speaker") {
       selectedSpeaker = ""
-    } else {
+    } else if (selectName == "Type") {
       selectedType = ""
+    } else if (selectName == "Month") {
+      selectedMonth = ""
+    } else {
+      selectedYear = ""
     }
   }
 
@@ -242,20 +260,6 @@
 <!-- dropdown filters -->
 
 <div class="selects">
-  <!--Category-->
-  <div class="select-container">
-    <div class="label">Category</div>
-    <Select
-      indicatorSvg={chevron}
-      showChevron={true}
-      {optionIdentifier}
-      {labelIdentifier}
-      items={dataset.categories}
-      placeholder="Select a category"
-      on:select={(event) => handleSelect(event, "Category")}
-      on:clear={() => handleClear("Category")}
-    />
-  </div>
   <!--Speaker-->
   <div class="select-container">
     <div class="label">Speaker</div>
@@ -281,12 +285,36 @@
       items={dataset.type}
       placeholder="Select a type"
       on:select={(event) => handleSelect(event, "Type")}
-      on:clear={(event) => handleClear(event, "Type")}
+      on:clear={(event) => handleClear("Type")}
     />
   </div>
-  <!-- Old tags dropdown - will fill with dates-->
+  <!--Month-->
   <div class="select-container">
-    <div class="label">Dates</div>
+    <div class="label">Month</div>
+    <Select
+      indicatorSvg={chevron}
+      showChevron={true}
+      {optionIdentifier}
+      {labelIdentifier}
+      items={dataset.months}
+      placeholder="Select a month"
+      on:select={(event) => handleSelect(event, "Month")}
+      on:clear={() => handleClear("Month")}
+    />
+  </div>
+  <!-- Year-->
+  <div class="select-container">
+    <div class="label">Year</div>
+    <Select
+      indicatorSvg={chevron}
+      showChevron={true}
+      {optionIdentifier}
+      {labelIdentifier}
+      items={dataset.years}
+      placeholder="Select a year"
+      on:select={(event) => handleSelect(event, "Year")}
+      on:clear={() => handleClear("Year")}
+    />
   </div>
 </div>
 
