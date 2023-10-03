@@ -255,7 +255,7 @@
                       {#if source[1] == 1}
                         <span
                           class="icon-tag-container"
-                          use:tooltip={{ theme: "energy" }}
+                          use:tooltip={{ theme: "poni" }}
                           aria-hidden="true"
                           aria-label="A vpn is required to view this source."
                           ><Icon name="Icon-info-alt" class="icon" /></span
@@ -286,7 +286,7 @@
 <style lang="scss">
   @use "../scss/abstracts/" as *;
   @use "../scss/components/table";
-  :global(.tippy-box[data-theme~="energy"]) {
+  :global(.tippy-box[data-theme~="poni"]) {
     @extend %text-style-ui-4;
     color: $color-text-gray-500;
     background-color: $color-background-white;
@@ -296,13 +296,13 @@
   }
 
   :global(
-      .tippy-box[data-theme~="energy"][data-placement^="top"]
+      .tippy-box[data-theme~="poni"][data-placement^="top"]
         > .tippy-arrow::before,
-      .tippy-box[data-theme~="energy"][data-placement^="bottom"]
+      .tippy-box[data-theme~="poni"][data-placement^="bottom"]
         > .tippy-arrow::before,
-      .tippy-box[data-theme~="energy"][data-placement^="left"]
+      .tippy-box[data-theme~="poni"][data-placement^="left"]
         > .tippy-arrow::before,
-      .tippy-box[data-theme~="energy"][data-placement^="right"]
+      .tippy-box[data-theme~="poni"][data-placement^="right"]
         > .tippy-arrow::before
     ) {
     border-top-color: $color-background-white;

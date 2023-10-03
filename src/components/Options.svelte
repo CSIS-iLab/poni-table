@@ -40,9 +40,9 @@
     )
     activeTab.classList.remove(
       "options__btn--tab--active",
-      "options__btn--tab--Resilience--active",
-      "options__btn--tab--Economic-Development--active",
-      "options__btn--tab--Emissions-Reduction--active",
+      "options__btn--tab--Russia--active",
+      "options__btn--tab--Other--active",
+      "options__btn--tab--NATO--active",
       "options__btn--tab--all--active",
     )
     tabActivate.classList.add(
@@ -210,7 +210,7 @@
   <h2 class="table-container__subtitle">Explore Events</h2>
 </section>
 
-<!-- tabs at the top (all, emissions reduction, econ development)-->
+<!-- tabs at the top (all, Other, Russia, NATO, US, Allies)-->
 <section class="options__container">
   <div class="options__header">
     <button

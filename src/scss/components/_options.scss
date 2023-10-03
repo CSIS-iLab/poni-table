@@ -120,9 +120,9 @@
       outline: 3px solid $color-focus-outline;
     }
 
-    &--tab--Economic-Development:hover {
+    &--tab--Other:hover {
       color: $color-text-gray-500;
-      border-bottom: 3px solid $color-policy-goals-economic-development;
+      border-bottom: 3px solid $color-categories-other;
       transition:
         color 0.3s ease-in-out,
         border-bottom 0.3s ease-in-out;
@@ -136,23 +136,23 @@
       }
     }
 
-    &--tab--Economic-Development--active,
-    &--tab--Economic-Development--active:hover {
-      border-bottom: 3px solid $color-policy-goals-economic-development;
+    &--tab--Other--active,
+    &--tab--Other--active:hover {
+      border-bottom: 3px solid $color-categories-other;
       transition: border-bottom 0.3s ease-in-out;
 
       .options__count {
         color: $color-text-white;
-        background-color: $color-policy-goals-economic-development;
+        background-color: $color-categories-other;
         transition:
           background-color 0.3s ease-in-out,
           color 0.3s ease-in-out;
       }
     }
 
-    &--tab--Emissions-Reduction:hover {
+    &--tab--Russia:hover {
       color: $color-text-gray-500;
-      border-bottom: 3px solid $color-policy-goals-emissions-reduction;
+      border-bottom: 3px solid $color-categories-russia;
       transition:
         color 0.3s ease-in-out,
         border-bottom 0.3s ease-in-out;
@@ -166,23 +166,23 @@
       }
     }
 
-    &--tab--Emissions-Reduction--active,
-    &--tab--Emissions-Reduction--active:hover {
-      border-bottom: 3px solid $color-policy-goals-emissions-reduction;
+    &--tab--Russia--active,
+    &--tab--Russia--active:hover {
+      border-bottom: 3px solid $color-categories-russia;
       transition: border-bottom 0.3s ease-in-out;
 
       .options__count {
         color: $color-text-white;
-        background-color: $color-policy-goals-emissions-reduction;
+        background-color: $color-categories-russia;
         transition:
           color 0.3s ease-in-out,
           background-color 0.3s ease-in-out;
       }
     }
 
-    &--tab--Resilience:hover {
+    &--tab--NATO:hover {
       color: $color-text-gray-500;
-      border-bottom: 3px solid $color-policy-goals-resilience;
+      border-bottom: 3px solid $color-categories-nato;
       transition:
         color 0.3s ease-in-out,
         border-bottom 0.3s ease-in-out;
@@ -196,14 +196,14 @@
       }
     }
 
-    &--tab--Resilience--active,
-    &--tab--Resilience--active:hover {
-      border-bottom: 3px solid $color-policy-goals-resilience;
+    &--tab--NATO--active,
+    &--tab--NATO--active:hover {
+      border-bottom: 3px solid $color-categories-nato;
       transition: border-bottom 0.3s ease-in-out;
 
       .options__count {
         color: $color-text-white;
-        background-color: $color-policy-goals-resilience;
+        background-color: $color-categories-nato;
         transition:
           background-color 0.3s ease-in-out,
           color 0.3s ease-in-out;
