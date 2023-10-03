@@ -376,36 +376,6 @@
       }
     }
 
-    &__policy-goal-container {
-      display: flex;
-      flex-direction: column;
-      align-items: flex-start;
-      padding: 0px;
-      gap: rem(8);
-      pointer-events: none;
-    }
-
-    &__policy-goal {
-      border-radius: rem(10);
-      padding: rem(3) rem(10) rem(5);
-      @extend %text-style-ui-5;
-
-      &--emissions_reduction {
-        color: $color-policy-goals-emissions-reduction-text;
-        background-color: $color-policy-goals-emissions-reduction-fill;
-      }
-
-      &--economic_development {
-        color: $color-policy-goals-economic-development-text;
-        background-color: $color-policy-goals-economic-development-fill;
-      }
-
-      &--resilience {
-        color: $color-policy-goals-resilience-text;
-        background-color: $color-policy-goals-resilience-fill;
-      }
-    }
-
     &__no-data__title {
       padding-bottom: rem(4);
       @extend %text-style-paragraph-1;
