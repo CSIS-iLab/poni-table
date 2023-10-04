@@ -1,11 +1,11 @@
 <script>
-  import Icon from "./Icons.svelte";
+  import Icon from "./Icons.svelte"
 
   function copyURL(e) {
-    e.preventDefault();
-    const url = window.location.href;
+    e.preventDefault()
+    const url = window.location.href
     //Use the clipboard's writeText method to pass the inputs text to the clipboard
-    navigator.clipboard.writeText(url).then((res) => {});
+    navigator.clipboard.writeText(url).then((res) => {})
   }
 </script>
 
@@ -44,7 +44,7 @@
   </li>
   <li class="share__item">
     <a
-      href="mailto:energy@csis.org?subject=State Energy | CSIS Energy Security and Climate Change Program"
+      href="mailto:energy@csis.org?subject=Russian Nuclear Threats Timeline | CSIS Project on Nuclear Issues"
       class="share__link"
       aria-label="Share via email"
     >
