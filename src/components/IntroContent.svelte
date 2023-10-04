@@ -12,8 +12,8 @@
         <h1 class="intro-content__title">Russian Nuclear Threats Timeline</h1>
         <p class="intro-content__introduction">
           A curated database of events illustrating the evolution of nuclear
-          threats in the leadup to - and throughout the first year of - the War
-          in Ukraine. From the <a
+          threats in the leadup to &mdash; and throughout the first year of
+          &mdash; the War in Ukraine. From the <a
             class="intro-content__link"
             href="https://www.csis.org/programs/international-security-program/project-nuclear-issues"
             target="_blank">CSIS Project on Nuclear Issues</a

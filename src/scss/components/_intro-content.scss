@@ -32,18 +32,18 @@ main {
     // TODO: find better names for these modifiers
     &--small {
       @extend %text-style-ui-5-caps;
-      color: $color-text-gray-400;
+      color: $color-text-off-white;
       margin-bottom: rem(4);
     }
 
     &--regular {
       @extend %text-style-ui-4-caps;
-      color: $color-text-gray-300;
+      color: $color-text-off-white;
 
       &::after {
         content: "";
         display: block;
-        border-bottom: 2px solid $color-borders-gray-100;
+        border-bottom: 2px solid $color-text-off-white;
         width: 23px;
         height: 2px;
         margin: 0 auto;
@@ -57,20 +57,15 @@ main {
     margin-bottom: rem(48);
 
     @extend %text-style-heading-1;
-    color: $color-text-gray-500;
+    color: $color-text-off-white;
     text-align: center;
   }
 
   &__introduction {
-    //margin: 0 auto;
     margin-bottom: rem(16);
     max-width: $size__content-max-width;
-    //text-align: center;
     @extend %text-style-paragraph-1;
-
-    span {
-      color: $color-brand-blue-600;
-    }
+    color: $color-text-off-white;
   }
 
   &__more {
@@ -82,7 +77,7 @@ main {
   }
 
   &__link {
-    color: $color-brand-blue-600;
+    color: $color-url;
     text-decoration: none;
     transition: $transition__link;
 
@@ -94,17 +89,15 @@ main {
     }
 
     .intro-content__more__icon-container {
-      // color brand-blue-600
       filter: invert(39%) sepia(72%) saturate(6596%) hue-rotate(200deg)
         brightness(100%) contrast(84%);
       transition: $transition__link;
     }
 
     &:hover {
-      color: $color-brand-blue-700;
+      color: $color-url-hover;
 
       .intro-content__more__icon-container {
-        // color: $color-brand-blue-700;
         filter: invert(22%) sepia(54%) saturate(2858%) hue-rotate(194deg)
           brightness(92%) contrast(101%);
         transition: $transition__link;
@@ -112,11 +105,9 @@ main {
     }
 
     &:visited {
-      color: $color-brand-blue-870;
+      color: $color-url-visited;
 
       .intro-content__more__icon-container {
-        // color: $color-brand-blue-800;
-        // opacity: 0.7;
         filter: invert(9%) sepia(41%) saturate(6837%) hue-rotate(211deg)
           brightness(98%) contrast(99%);
       }
@@ -246,7 +237,6 @@ main {
 }
 
 .wrapper {
-  // background-color: $color-background-gray-100;
   background: url(https://res.cloudinary.com/csisideaslab/image/upload/v1696427112/poni/PONI-Table-Header1-Temp_2.jpg);
   background-size: cover;
   background-position: center;
