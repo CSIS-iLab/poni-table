@@ -3,8 +3,8 @@
 
 %text-style-heading-1 {
   @include font-clamp(36px, 53px);
-  font-family: $font-family-default;
-  font-weight: $font-weight-default;
+  font-family: $font-family-heading;
+  font-weight: $font-weight-bold;
   line-height: 1.1;
 }
 
