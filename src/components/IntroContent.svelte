@@ -1,45 +1,5 @@
 <script>
   import Icon from "./Icons.svelte"
-
-  export let filteredData
-  let authorities = []
-  const totalEntries = filteredData.length
-
-  // for  bar chart at the top of the page
-  function getMostReferencedSpeakers() {
-    filteredData.forEach((element) => {
-      if (element.speaker != "") {
-        authorities.push(element.speaker)
-      }
-    })
-    return countOccurences(authorities)
-  }
-  // get MostReferencedSpeakers count
-  function countOccurences(array) {
-    const counts = {}
-    array.forEach(function (x) {
-      counts[x] = (counts[x] || 0) + 1
-    })
-    return getTopThree(counts)
-  }
-  // get top top 3 most referenced speakers
-  function getTopThree(obj) {
-    const sortable = Object.fromEntries(
-      Object.entries(obj).sort(([, a], [, b]) => b - a),
-    )
-
-    let topThree = []
-    let objNames = Object.keys(sortable)
-
-    objNames.forEach((name, i) => {
-      if (i < 3) {
-        topThree.push({ [name]: sortable[name] })
-      }
-    })
-    return topThree
-  }
-
-  const mostReferencedSpeakers = getMostReferencedSpeakers()
 </script>
 
 <div class="wrapper">
@@ -70,35 +30,6 @@
       <div class="intro-content__flex-right"></div>
     </div>
   </main>
-  <div class="container">
-    <div class="intro-content__graphs">
-      <div class="intro-bar">
-        <div class="intro-bar__title">Most Referenced Speakers</div>
-        <div class="intro-bar__content">
-          <div class="intro-bar__column--labels">
-            <!-- iterate and add the mostReferencedSpeakers to chart -->
-            {#each mostReferencedSpeakers as speaker}
-              <div><span>{Object.keys(speaker)}</span></div>
-            {/each}
-          </div>
-          <div
-            class="intro-bar__column--bars"
-            data-total-entries={totalEntries}
-          >
-            <!-- iterate and add the mostReferencedSpeakers values -->
-            {#each mostReferencedSpeakers as speaker}
-              <div class="bar">
-                <span
-                  style="width: {(Object.values(speaker) / totalEntries) *
-                    100}%"
-                />{Object.values(speaker)}
-              </div>
-            {/each}
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
 </div>
 
 <style lang="scss">

@@ -251,4 +251,5 @@ main {
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
+  min-height: calc(100svh - 60px);
 }
