@@ -32,18 +32,18 @@ main {
     // TODO: find better names for these modifiers
     &--small {
       @extend %text-style-ui-5-caps;
-      color: $color-text-off-white;
+      color: $color-off-white;
       margin-bottom: rem(4);
     }
 
     &--regular {
       @extend %text-style-ui-4-caps;
-      color: $color-text-off-white;
+      color: $color-off-white;
 
       &::after {
         content: "";
         display: block;
-        border-bottom: 2px solid $color-text-off-white;
+        border-bottom: 2px solid $color-off-white;
         width: 23px;
         height: 2px;
         margin: 0 auto;
@@ -57,7 +57,7 @@ main {
     margin-bottom: rem(48);
 
     @extend %text-style-heading-1;
-    color: $color-text-off-white;
+    color: $color-off-white;
     text-align: center;
   }
 
@@ -65,7 +65,7 @@ main {
     margin-bottom: rem(16);
     max-width: $size__content-max-width;
     @extend %text-style-paragraph-1;
-    color: $color-text-off-white;
+    color: $color-off-white;
   }
 
   &__more {

@@ -29,14 +29,14 @@
   }
 
   &__wrapper {
-    background-color: $color-background-white;
+    background-color: $color-off-white;
   }
 
   &__cell {
     &--header {
       color: $color-text-gray-500;
       padding: rem(12) rem(16);
-      background-color: $color-background-white;
+      background-color: $color-off-white;
       @extend %text-style-ui-2-bold;
 
       border-bottom: 1px solid $color-borders-gray-400;
@@ -149,8 +149,14 @@
   border-top: 0;
 
   tr {
-    background-color: $color-background-white;
+    background-color: $color-off-white;
     transition: $transition__link;
+
+    &:hover {
+      & .table__body__cell {
+        color: $color-off-white;
+      }
+    }
   }
 
   .key-moment {
@@ -162,22 +168,19 @@
   }
 
   .title:hover {
-    background-color: $color-background-gray-100;
+    background-color: $color-dark-red;
     transition: $transition__link;
   }
 
-  .title--active {
-    background-color: $color-background-gray-200;
-  }
-
   .extra-content {
-    background-color: $color-background-gray-200;
+    background-color: $color-main-red;
 
     .table__body__cell {
       padding-left: 6vw;
       overflow: hidden;
       padding-top: 0;
       padding-bottom: 0;
+      color: $color-off-white;
 
       @include breakpoint("medium") {
         padding-left: rem(56);
@@ -217,7 +220,6 @@
       text-decoration: none;
 
       .icon-container {
-        // color brand-blue-600
         margin-left: rem(5);
         filter: invert(39%) sepia(72%) saturate(6596%) hue-rotate(200deg)
           brightness(100%) contrast(84%);
@@ -267,7 +269,7 @@
   }
 
   &__cell {
-    color: $color-text-gray-500;
+    color: $color-text-main;
 
     overflow-wrap: break-word;
     @extend %text-style-ui-2;
@@ -358,7 +360,7 @@
           position: absolute;
           width: 9px;
           height: 2px;
-          background-color: rgba(0, 0, 0, 0.7);
+          background-color: $color-light-red;
           transition: $transition__link;
         }
 
@@ -412,4 +414,9 @@
   @extend %text-style-ui-4;
   color: $color-text-gray-500;
   background-color: $color-background-white;
+}
+
+.title.active {
+  background-color: $color-dark-red;
+  color: $color-off-white;
 }
