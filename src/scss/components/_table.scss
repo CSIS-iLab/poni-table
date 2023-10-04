@@ -426,3 +426,8 @@
   color: $color-text-gray-500;
   background-color: $color-background-white;
 }
+
+.title.active {
+  background-color: $color-dark-red;
+  color: $color-off-white;
+}
