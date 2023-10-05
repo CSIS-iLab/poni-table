@@ -33,14 +33,14 @@
           : true
         const isSelectedType = selectedType ? row.type === selectedType : true
 
-        const filteredActivity = searchText
+        const filteredTimelineEvent = searchText
           ? searchText.toLowerCase().trim()
           : ""
         const matchesText = (text) =>
-          text.toLowerCase().includes(filteredActivity)
+          text.toLowerCase().includes(filteredTimelineEvent)
 
         const matchesAnyCondition = [
-          matchesText(row.activity.title),
+          matchesText(row.timelineEvent.title),
           matchesText(row.category),
           matchesText(row.type),
           matchesText(row.speaker),
