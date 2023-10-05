@@ -7,8 +7,27 @@ main {
 .intro-content {
   padding-top: rem(132);
   padding-left: 0;
+  padding-left: 0;
   max-width: $size__intro-content-wide-max-width;
   text-align: center;
+
+  &__container {
+    display: flex;
+    //flex: 1;
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-start;
+    text-align: center;
+    margin-left: 0;
+  }
+
+  &__flex-left {
+    flex: 2;
+  }
+
+  &__flex-right {
+    flex: 1;
+  }
 
   &__container {
     display: flex;
@@ -62,8 +81,10 @@ main {
   }
 
   &__introduction {
+    //margin: 0 auto;
     margin-bottom: rem(16);
     max-width: $size__content-max-width;
+    //text-align: center;
     @extend %text-style-paragraph-1;
     color: $color-off-white;
   }
