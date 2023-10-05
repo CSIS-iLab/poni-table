@@ -11,7 +11,7 @@
 
   const sortByColumns = [
     "date",
-    "activity",
+    "event",
     "category",
     "speaker",
     "type of resource",
@@ -42,14 +42,14 @@
   }
 
   const headerNames = [
-    "Activity",
+    "Event",
     "Date",
     "Category",
     "Speaker",
     "Type of Resource",
   ]
 
-  $: sortBy = { col: "activity", ascending: true }
+  $: sortBy = { col: "event", ascending: true }
 
   $: sort = (e, column) => {
     column = column.toLowerCase().replace(/\s/g, "_") // replace spaces using regex with undesrscore
@@ -71,10 +71,10 @@
 
     // current function - does NOT also sort by date,
     // only puts event titles in alpha order
-    let sortActivity = (a, b) =>
-      a.activity.title < b.activity.title
+    let sortTimelineEvent = (a, b) =>
+      a.timelineEvent.title < b.timelineEvent.title
         ? -1 * sortModifier
-        : a.activity.title > b.activity.title
+        : a.timelineEvent.title > b.timelineEvent.title
         ? 1 * sortModifier
         : 0
 
@@ -86,7 +86,7 @@
     let sortByNameThenDate = (a, b) => {
       let rv = a.date - b.date
       if (rv === 0) {
-        rv = a.activity.title.localeCompare(b.activity.title)
+        rv = a.timelineEvent.title.localeCompare(b.timelineEvent.title)
       }
       return rv
     }
@@ -105,13 +105,13 @@
         ? 1 * sortModifier
         : 0
 
-    //Sort by activity title
-    if (column == "activity") {
+    //Sort by timeline event title
+    if (column == "event") {
       console.log(
         "filteredData",
-        (filteredData = filteredData.sort(sortActivity)),
+        (filteredData = filteredData.sort(sortTimelineEvent)),
       )
-      return (filteredData = filteredData.sort(sortActivity))
+      return (filteredData = filteredData.sort(sortTimelineEvent))
     }
 
     filteredData = filteredData.sort(sortDate).sort(sortColumnName)
@@ -122,10 +122,10 @@
     iconsActive.forEach((icon) => {
       icon.classList.remove("sort-icon--active")
     })
-    const divActivity = document.querySelector(
-      ".table__cell--header__container__activity",
+    const divTimelineEvent = document.querySelector(
+      ".table__cell--header__container__event",
     )
-    divActivity.children[1].children[1].classList.add("sort-icon--active")
+    divTimelineEvent.children[1].children[1].classList.add("sort-icon--active")
     // Sync horizontal scroll of table header and table body
     // Inspired by https://codepen.io/Goweb/pen/rgrjWx
     const scrollSync = () => {
@@ -199,15 +199,17 @@
         {#each filteredData as rows}
           <tr
             on:click={(e) => handleClick(e)}
-            class="title table__body__cell--border {(rows.key_moment !== null) ? 'key-moment' : '' }"
+            class="title table__body__cell--border {rows.key_moment !== null
+              ? 'key-moment'
+              : ''}"
           >
             <!-- event name/title -->
             <td class="table__body__cell table__body__cell--data"
               ><div class="table__body__cell__title-container">
-                {#if (rows.key_moment !== null) }
-                <span>o</span>
+                {#if rows.key_moment !== null}
+                  <span>o</span>
                 {/if}
-                <span class="icon-container" />{rows.activity.title}
+                <span class="icon-container" />{rows.timelineEvent.title}
               </div></td
             >
             <!-- event date - displays string value -->
@@ -231,18 +233,21 @@
           <tr class="extra-content hide">
             <td class="table__body__cell" colspan="6">
               <div class="extra-content__container">
-                <div class="description">{rows.activity.quote}</div>
-                {#if rows.activity.image_url && rows.activity.image_source}
+                <div class="description">{rows.timelineEvent.quote}</div>
+                {#if rows.timelineEvent.image_url && rows.timelineEvent.image_source}
                   <!-- TODO: add styles for img and the photo credit -->
                   <img
                     loading="lazy"
-                    src={rows.activity.image_url}
-                    alt={rows.activity.image_source}
+                    src={rows.timelineEvent.image_url}
+                    alt={rows.timelineEvent.image_source}
                   />
-                  <span><b>Photo Credit:</b> {rows.activity.image_source}</span>
+                  <span
+                    ><b>Photo Credit:</b>
+                    {rows.timelineEvent.image_source}</span
+                  >
                 {/if}
                 <div class="link">
-                  {#each rows.activity.sources as source}
+                  {#each rows.timelineEvent.sources as source}
                     {#if source[0] != ""}
                       <a
                         href={source[0]}
