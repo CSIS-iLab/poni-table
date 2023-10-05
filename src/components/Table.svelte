@@ -123,7 +123,7 @@
       icon.classList.remove("sort-icon--active")
     })
     const divTimelineEvent = document.querySelector(
-      ".table__cell--header__container__timelineEvent",
+      ".table__cell--header__container__event",
     )
     divTimelineEvent.children[1].children[1].classList.add("sort-icon--active")
     // Sync horizontal scroll of table header and table body
