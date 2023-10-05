@@ -22,6 +22,7 @@
   font-family: arial, sans-serif;
   border-collapse: collapse;
   table-layout: fixed;
+  margin: 0 auto;
 
   @include breakpoint("large") {
     margin-left: auto;
@@ -64,8 +65,8 @@
       }
 
       &:nth-child(2) {
-        min-width: rem(128);
-        max-width: rem(128);
+        min-width: rem(150);
+        max-width: rem(150);
       }
 
       &:nth-child(3) {
@@ -318,8 +319,8 @@
     }
 
     &:nth-child(2) {
-      min-width: rem(128);
-      max-width: rem(128);
+      min-width: rem(150);
+      max-width: rem(150);
     }
 
     &:nth-child(3) {
@@ -388,6 +389,16 @@
       color: $color-text-gray-200;
     }
   }
+
+  .title.active {
+    background-color: $color-dark-red;
+    color: $color-off-white;
+
+    .table__body__cell {
+      background-color: $color-dark-red;
+      color: $color-off-white;
+    }
+  }
 }
 
 .title--active .table__body__cell__title-container .icon-container {
@@ -414,9 +425,4 @@
   @extend %text-style-ui-4;
   color: $color-text-gray-500;
   background-color: $color-background-white;
-}
-
-.title.active {
-  background-color: $color-dark-red;
-  color: $color-off-white;
 }
