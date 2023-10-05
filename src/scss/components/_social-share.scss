@@ -12,19 +12,15 @@
     padding: rem(8);
     color: $color-text-gray-300;
     transition: $transition__link;
-    // color gray-300
-    filter: invert(79%) sepia(90%) saturate(964%) hue-rotate(329deg)
-      brightness(98%) contrast(106%);
+    fill: #ffc72c;
 
     &:hover {
-      // color: $color-brand-blue-600;
-      filter: invert(47%) sepia(94%) saturate(545%) hue-rotate(11deg)
-        brightness(91%) contrast(102%);
+      fill: #b68600;
     }
 
     &:focus {
-      filter: invert(79%) sepia(90%) saturate(964%) hue-rotate(329deg)
-        brightness(98%) contrast(106%);
+      // filter: invert(79%) sepia(90%) saturate(964%) hue-rotate(329deg)
+      //   brightness(98%) contrast(106%);
       outline: 3px solid $color-focus-outline;
     }
   }
