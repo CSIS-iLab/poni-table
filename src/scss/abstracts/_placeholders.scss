@@ -83,6 +83,12 @@
   font-weight: $font-weight-bold;
 }
 
+%text-style-ui-2-caps {
+  @extend %text-style-ui-2;
+  text-transform: uppercase;
+  // line-height:120%;
+}
+
 %text-style-ui-3 {
   @extend %text-style-ui-2;
   @include font-size(15px);

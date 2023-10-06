@@ -387,7 +387,7 @@
   }
 
   :global(.selectContainer) {
-    --internalPadding: 0 4px !important;
+    --internalPadding: 0 4px 0 0 !important;
     --itemFirstBorderRadius: 2px;
   }
 
@@ -437,7 +437,7 @@
   }
 
   :global(.selectContainer > input) {
-    --inputPadding: 0 28px 0 4px;
+    --inputPadding: 0 28px 0 0;
   }
 
   :global(.indicator) {

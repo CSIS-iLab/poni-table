@@ -31,14 +31,14 @@
 }
 
 .selectContainer {
-  padding: 0 4px;
+  //padding: 0 4px;
   width: 100%;
 }
 
 .select-container {
   --border: 0;
   --background: transparent;
-  border-bottom: 1px solid $color-borders-gray-100;
+  border-bottom: 1px solid $color-main-red;
   --borderRadius: 0;
   // --borderFocusColor: #{$color-brand-blue-600};
   @extend %text-style-ui-2;
