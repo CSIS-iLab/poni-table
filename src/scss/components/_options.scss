@@ -79,11 +79,11 @@
       padding-right: rem(4);
       border-bottom: 3px solid $color-off-white;
       margin-right: rem(16);
-      color: red;
+      color: $color-main-red;
 
       .options__count {
-        color: red;
-        background-color: blue;
+        color: $color-off-white;
+        background-color: $color-light-red;
         transition:
           background-color 0.3s ease-in-out,
           color 0.3s ease-in-out;
@@ -91,11 +91,12 @@
     }
 
     &--tab:hover {
-      color: blue;
+      color: $color-light-red;
+      border-bottom: 3px solid $color-url;
 
       .options__count {
-        color: blue;
-        background-color: red;
+        color: $color-main-red;
+        background-color: $color-url;
         transition:
           background-color 0.3s ease-in-out,
           color 0.3s ease-in-out;
@@ -103,11 +104,11 @@
     }
 
     &--tab--active {
-      border-bottom: 3px solid $color-borders-gray-400;
+      border-bottom: 3px solid $color-main-red;
       transition: border-bottom 0.3s ease-in-out;
 
       .options__count {
-        background-color: yellow;
+        background-color: $color-dark-red;
       }
     }
 
