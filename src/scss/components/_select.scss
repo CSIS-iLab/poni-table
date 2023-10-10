@@ -19,6 +19,7 @@
   padding-left: var(--container-padding);
   padding-right: var(--container-padding);
   gap: rem(24);
+  // background of entire div containing all dropdowns
   background-color: $color-off-white;
 
   @include breakpoint("medium") {
@@ -40,7 +41,6 @@
   --background: transparent;
   border-bottom: 1px solid $color-main-red;
   --borderRadius: 0;
-  // --borderFocusColor: #{$color-brand-blue-600};
   @extend %text-style-ui-2;
   // width: auto;
   --indicatorWidth: rem(12);
@@ -48,19 +48,16 @@
   --inputFontSize: rem(16);
   display: flex;
   flex-direction: column;
-
-  &::placeholder {
-    color: $color-text-gray-200;
-    @extend %text-style-ui-2;
-  }
+  // color of the text inside the dropdowns
+  color: blue;
 
   &:hover {
     border-color: $color-brand-blue-600;
   }
 
   &:focus-within {
-    // border-color: $color-brand-blue-600;
-    border-bottom: 1px solid $color-brand-blue-600;
+    //underline color when dropdown is open
+    border-bottom: 1px solid purple;
 
     .select__select-tag-icon {
       // color brand blue 600
@@ -71,10 +68,6 @@
 
   @include breakpoint("medium") {
     max-width: rem(350);
-  }
-
-  input {
-    position: relative !important;
   }
 }
 
