@@ -3,6 +3,6 @@
 .label {
   @extend %text-style-ui-2-caps;
   // labels above the selects in all caps
-  color: red;
+  color: $color-main-red;
   padding-bottom: rem(4);
 }
