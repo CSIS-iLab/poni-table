@@ -65,7 +65,6 @@
       .icon-container {
         margin-left: rem(4);
         fill: $color-url;
-
       }
 
       &:hover {
@@ -117,7 +116,7 @@
 
       &:focus {
         color: $color-main-red;
-        background-color: $color-background-off-white;
+        background-color: $color-off-white;
         outline: 0;
       }
     }
@@ -147,7 +146,6 @@
       &:hover {
         color: $color-url-hover;
         transition: $transition__link;
-
 
         .back-top__icon-container {
           fill: $color-url-hover;
