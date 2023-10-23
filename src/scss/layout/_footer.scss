@@ -44,11 +44,11 @@
   }
 
   a {
-    color: $color-text-gray-300;
+    color: $color-url;
     transition: color 0.3s ease-in-out;
 
     &:hover {
-      color: $color-brand-blue-600;
+      color: $color-url-hover;
       text-decoration: none;
     }
   }
