@@ -113,14 +113,14 @@
   .sort-icon {
     font-size: rem(8);
     pointer-events: none;
-    color: $color-text-gray-100;
+    color: #bba782;
 
     &--active {
       color: $color-text-gray-500;
     }
 
     &--inactive {
-      color: $color-text-gray-100;
+      color: #bba782;
     }
   }
 
