@@ -57,12 +57,12 @@
 
   &:focus-within {
     //underline color when dropdown is open
-    border-bottom: 1px solid purple;
+    border-bottom: 1px solid $color-main-red;
 
     .select__select-tag-icon {
-      // color brand blue 600
-      filter: invert(39%) sepia(72%) saturate(6596%) hue-rotate(200deg)
-        brightness(100%) contrast(84%);
+
+      fill: $color-dark-red;
+      color: $color-dark-red;
     }
   }
 

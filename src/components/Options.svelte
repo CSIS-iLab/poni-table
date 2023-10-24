@@ -451,13 +451,11 @@
   }
   .select-container :global(.selectContainer:hover .indicator) {
     // color brand blue 600
-    filter: invert(39%) sepia(72%) saturate(6596%) hue-rotate(200deg)
-      brightness(100%) contrast(84%);
+    // filter: invert(10%) sepia(28%) saturate(6883%) hue-rotate(349deg) brightness(97%) contrast(118%);
   }
 
   .select-container :global(.selectContainer:focus-within .indicator) {
     // color brand blue 600
-    filter: invert(39%) sepia(72%) saturate(6596%) hue-rotate(200deg)
-      brightness(100%) contrast(84%);
+    // filter: invert(10%) sepia(28%) saturate(6883%) hue-rotate(349deg) brightness(97%) contrast(118%);
   }
 </style>

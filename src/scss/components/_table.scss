@@ -217,29 +217,33 @@
     }
 
     .link a {
-      color: $color-brand-blue-600;
+      color: $color-url;
       text-decoration: none;
 
       .icon-container {
         margin-left: rem(5);
-        filter: invert(39%) sepia(72%) saturate(6596%) hue-rotate(200deg)
-          brightness(100%) contrast(84%);
+        // filter: invert(39%) sepia(72%) saturate(6596%) hue-rotate(200deg)
+        //   brightness(100%) contrast(84%);
+        fill: $color-url;
       }
 
       &:hover {
-        color: $color-brand-blue-700;
+        color: $color-url-hover;
+        transition: $transition__link;
+
 
         .icon-container {
           // color brand-blue-700
-          filter: invert(22%) sepia(54%) saturate(2858%) hue-rotate(194deg)
-            brightness(92%) contrast(101%);
+          // filter: invert(22%) sepia(54%) saturate(2858%) hue-rotate(194deg)
+          //   brightness(92%) contrast(101%);
+          fill: $color-url-hover;
         }
       }
 
       &:focus {
-        color: $color-brand-blue-700;
-        background-color: $color-background-light-blue-100;
-        outline: 0;
+        outline-width: 3px;
+        outline-style: solid;
+        outline-color: $color-focus-outline;
 
         .icon-container {
           // color: $color-brand-blue-700;
@@ -249,13 +253,14 @@
       }
 
       &:visited {
-        color: $color-brand-blue-870;
+        color: $color-url-hover;
 
         .icon-container {
           // color: $color-brand-blue-800;
           opacity: 0.7;
-          filter: invert(9%) sepia(41%) saturate(6837%) hue-rotate(211deg)
-            brightness(98%) contrast(99%);
+          // filter: invert(9%) sepia(41%) saturate(6837%) hue-rotate(211deg)
+          //   brightness(98%) contrast(99%);
+          fill: $color-url-hover;
         }
       }
     }
