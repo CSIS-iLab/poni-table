@@ -227,19 +227,8 @@
           <tr class="extra-content hide">
             <td class="table__body__cell" colspan="6">
               <div class="extra-content__container">
-                <div class="description">{rows.timelineEvent.quote}</div>
-                {#if rows.timelineEvent.image_url && rows.timelineEvent.image_source}
-                  <!-- TODO: add styles for img and the photo credit -->
-                  <img
-                    loading="lazy"
-                    src={rows.timelineEvent.image_url}
-                    alt={rows.timelineEvent.image_source}
-                  />
-                  <span
-                    ><b>Photo Credit:</b>
-                    {rows.timelineEvent.image_source}</span
-                  >
-                {/if}
+                <div class="description">
+                <div>{rows.timelineEvent.quote}</div>
                 <div class="link">
                   {#each rows.timelineEvent.sources as source}
                     {#if source[0] != ""}
@@ -263,6 +252,21 @@
                     {/if}
                   {/each}
                 </div>
+                </div>
+                {#if rows.timelineEvent.image_url && rows.timelineEvent.image_source}
+                  <!-- TODO: add styles for img and the photo credit -->
+                  <div class="img-container">
+                  <img
+                    loading="lazy"
+                    src={rows.timelineEvent.image_url}
+                    alt={rows.timelineEvent.image_source}
+                  />
+                  <span
+                    ><b>Photo Credit:</b>
+                    {rows.timelineEvent.image_source}</span
+                  >
+                  </div>
+                {/if}
               </div>
             </td>
           </tr>
