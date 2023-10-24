@@ -82,8 +82,8 @@
       color: $color-main-red;
 
       .options__count {
-        color: $color-off-white;
-        background-color: $color-light-red;
+        color: $color-main-red;
+        background-color: #e1c89d;
         transition:
           background-color 0.3s ease-in-out,
           color 0.3s ease-in-out;
@@ -109,6 +109,7 @@
 
       .options__count {
         background-color: $color-dark-red;
+        color: $color-off-white;
       }
     }
 
