@@ -447,7 +447,7 @@
   }
 
   :global(.selectedItem) {
-    color: $color-brand-blue-600;
+    color: $color-main-red;
   }
   .select-container :global(.selectContainer:hover .indicator) {
     // color brand blue 600

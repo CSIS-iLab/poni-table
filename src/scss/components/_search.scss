@@ -94,8 +94,6 @@ label[aria-hidden="true"],
     height: 100%;
     display: flex;
     align-items: center;
-    // color: $color-text-gray-200;
-    filter: invert(57%) sepia(7%) saturate(666%) hue-rotate(180deg)
-      brightness(92%) contrast(89%);
+    fill: #3f4f5f;
   }
 }
