@@ -4,6 +4,7 @@
   background-color: $color-off-white;
 
   &__header {
+    padding-top: rem(16);
     max-width: $size__page-max-width;
     margin-left: var(--container-padding);
     margin-right: var(--container-padding);
