@@ -29,24 +29,6 @@ main {
     flex: 1;
   }
 
-  &__container {
-    display: flex;
-    //flex: 1;
-    flex-direction: row;
-    align-items: center;
-    justify-content: flex-start;
-    text-align: center;
-    margin-left: 0;
-  }
-
-  &__flex-left {
-    flex: 2;
-  }
-
-  &__flex-right {
-    flex: 1;
-  }
-
   &__overline {
     // TODO: find better names for these modifiers
     &--small {
