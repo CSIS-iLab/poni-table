@@ -7,22 +7,32 @@ main {
 .intro-content {
   padding-top: rem(132);
   padding-left: 0;
-  padding-left: 0;
+  padding-right: 0;
   max-width: $size__intro-content-wide-max-width;
   text-align: center;
 
   &__container {
     display: flex;
     //flex: 1;
-    flex-direction: row;
+    flex-direction: column;
     align-items: center;
-    justify-content: flex-start;
+    // justify-content: flex-start;
     text-align: center;
     margin-left: 0;
+
+    @include breakpoint("medium") {
+      flex-direction: row;
+      justify-content: flex-start;
+    }
   }
 
   &__flex-left {
-    flex: 2;
+    flex: 1;
+    padding: 20px;
+
+    @include breakpoint("medium") {
+      flex: 2;
+    }
   }
 
   &__flex-right {
@@ -248,7 +258,11 @@ main {
 .wrapper {
   background: url(https://res.cloudinary.com/csisideaslab/image/upload/v1696427112/poni/PONI-Table-Header1-Temp_2.jpg);
   background-size: cover;
-  background-position: 60% 10%;
+  // background-position: 60% 20%;
   background-repeat: no-repeat;
   min-height: calc(100vh - 40px);
+
+  @include breakpoint("medium") {
+    background-position: 60% 10%;
+  }
 }
