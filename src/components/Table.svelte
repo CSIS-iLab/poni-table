@@ -22,17 +22,11 @@
     let currentRow = undefined
     let extraContent = undefined
 
-    if (e.target.parentNode.classList.contains("title")) {
-      title = e.target.parentNode
-      currentRow = title.nextElementSibling
-      extraContent = e.target.parentNode.nextElementSibling
-    } else {
-      title = e.target.parentNode.parentNode
-      currentRow = title.nextElementSibling
-      extraContent = e.target.parentNode.parentNode.nextElementSibling
-    }
+    title = e.target.parentNode.parentNode
+    currentRow = title.nextElementSibling
+    extraContent = e.target.parentNode.parentNode.nextElementSibling
 
-    title.classList.toggle("title--active")
+    title.classList.toggle("active")
     title.classList.toggle("table__body__cell--border")
     currentRow.classList.toggle("table__body__cell--border")
     // Show/Hide extraContent
@@ -77,19 +71,6 @@
         : a.timelineEvent.title > b.timelineEvent.title
         ? 1 * sortModifier
         : 0
-
-    // possible option - will sort by date, and then
-    // within that date, sort events by alpha order
-    // so dates within 01/01/22 - 01/31/22 are in alpha order,
-    // then dates 02/01/22 - 02/28/22 are in alpha order.
-    // not called right now -- user probably expects only alpha sort
-    let sortByNameThenDate = (a, b) => {
-      let rv = a.date - b.date
-      if (rv === 0) {
-        rv = a.timelineEvent.title.localeCompare(b.timelineEvent.title)
-      }
-      return rv
-    }
 
     let sortDate = (a, b) =>
       a.date < b.date
@@ -233,42 +214,46 @@
           <tr class="extra-content hide">
             <td class="table__body__cell" colspan="6">
               <div class="extra-content__container">
-                <div class="description">{rows.timelineEvent.quote}</div>
+                <div class="description">
+                  <div>{rows.timelineEvent.quote}</div>
+                  <div class="link">
+                    {#each rows.timelineEvent.sources as source}
+                      {#if source[0] != ""}
+                        <a
+                          href={source[0]}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          >Go to resource<span class="icon-container"
+                            ><Icon name="Icon-open-blank" class="icon" /></span
+                          >
+                        </a>
+                        {#if source[1] == 1}
+                          <span
+                            class="icon-tag-container"
+                            use:tooltip={{ theme: "poni" }}
+                            aria-hidden="true"
+                            aria-label="A vpn is required to view this source."
+                            ><Icon name="Icon-info-alt" class="icon" /></span
+                          >
+                        {/if}
+                      {/if}
+                    {/each}
+                  </div>
+                </div>
                 {#if rows.timelineEvent.image_url && rows.timelineEvent.image_source}
                   <!-- TODO: add styles for img and the photo credit -->
-                  <img
-                    loading="lazy"
-                    src={rows.timelineEvent.image_url}
-                    alt={rows.timelineEvent.image_source}
-                  />
-                  <span
-                    ><b>Photo Credit:</b>
-                    {rows.timelineEvent.image_source}</span
-                  >
+                  <div class="img-container">
+                    <img
+                      loading="lazy"
+                      src={rows.timelineEvent.image_url}
+                      alt={rows.timelineEvent.image_source}
+                    />
+                    <span
+                      ><b>Photo Credit:</b>
+                      {rows.timelineEvent.image_source}</span
+                    >
+                  </div>
                 {/if}
-                <div class="link">
-                  {#each rows.timelineEvent.sources as source}
-                    {#if source[0] != ""}
-                      <a
-                        href={source[0]}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        >Go to resource<span class="icon-container"
-                          ><Icon name="Icon-open-blank" class="icon" /></span
-                        >
-                      </a>
-                      {#if source[1] == 1}
-                        <span
-                          class="icon-tag-container"
-                          use:tooltip={{ theme: "poni" }}
-                          aria-hidden="true"
-                          aria-label="A vpn is required to view this source."
-                          ><Icon name="Icon-info-alt" class="icon" /></span
-                        >
-                      {/if}
-                    {/if}
-                  {/each}
-                </div>
               </div>
             </td>
           </tr>
