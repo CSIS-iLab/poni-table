@@ -387,8 +387,9 @@
   }
 
   :global(.selectContainer) {
-    --internalPadding: 0 4px !important;
+    --internalPadding: 0 4px 0 0 !important;
     --itemFirstBorderRadius: 2px;
+    --placeholderColor: $color-placeholder;
   }
 
   :global(.selectContainer .item) {
@@ -437,7 +438,7 @@
   }
 
   :global(.selectContainer > input) {
-    --inputPadding: 0 28px 0 4px;
+    --inputPadding: 0 28px 0 0;
   }
 
   :global(.indicator) {
@@ -446,17 +447,17 @@
   }
 
   :global(.selectedItem) {
-    color: $color-brand-blue-600;
+    color: $color-main-red;
   }
   .select-container :global(.selectContainer:hover .indicator) {
-    // color brand blue 600
-    filter: invert(39%) sepia(72%) saturate(6596%) hue-rotate(200deg)
-      brightness(100%) contrast(84%);
+    // $color-light-red
+    filter: invert(14%) sepia(52%) saturate(5603%) hue-rotate(355deg)
+      brightness(82%) contrast(85%);
   }
 
   .select-container :global(.selectContainer:focus-within .indicator) {
-    // color brand blue 600
-    filter: invert(39%) sepia(72%) saturate(6596%) hue-rotate(200deg)
-      brightness(100%) contrast(84%);
+    // $color-light-red
+    filter: invert(14%) sepia(52%) saturate(5603%) hue-rotate(355deg)
+      brightness(82%) contrast(85%);
   }
 </style>
