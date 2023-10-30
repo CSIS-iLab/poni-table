@@ -44,7 +44,7 @@
   </li>
   <li class="share__item">
     <a
-      href="mailto:energy@csis.org?subject=Russian Nuclear Threats Timeline | CSIS Project on Nuclear Issues"
+      href="mailto:?subject=Russian Nuclear Threats Timeline | CSIS Project on Nuclear Issues"
       class="share__link"
       aria-label="Share via email"
     >
