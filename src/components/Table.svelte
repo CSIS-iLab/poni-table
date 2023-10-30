@@ -241,7 +241,6 @@
                   </div>
                 </div>
                 {#if rows.timelineEvent.image_url && rows.timelineEvent.image_source}
-                  <!-- TODO: add styles for img and the photo credit -->
                   <div class="img-container">
                     <img
                       loading="lazy"
