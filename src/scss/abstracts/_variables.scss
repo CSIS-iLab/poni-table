@@ -5,11 +5,11 @@
 /*Color palette: https://coolors.co/b68600-ffc72c-ebdbc1-eaeaea-901a1a-350000-590000*/
 $color-dark-yellow: rgba(182, 134, 0, 1); //#B68600
 $color-light-yellow: rgba(255, 199, 44, 1); //#FFC72C
-$color-off-white: rgba(235, 219, 193, 1);
-$color-light-red: rgba(144, 26, 26, 1);
-$color-main-red: rgba(89, 0, 0, 1);
-$color-dark-red: rgba(53, 0, 0, 1);
-$color-platinum: rgba(234, 234, 234, 1);
+$color-off-white: rgba(235, 219, 193, 1); //#EBDBC1
+$color-light-red: rgba(144, 26, 26, 1); //#901A1A
+$color-main-red: rgba(89, 0, 0, 1); //#590000
+$color-dark-red: rgba(53, 0, 0, 1); //#350000
+$color-platinum: rgba(234, 234, 234, 1); //#EAEAEA
 $color-placeholder: rgba(74, 70, 67, 1); //#4A4643
 $color-antique-white: rgba(243, 233, 216, 1); //#F3E9D8
 $color-sunset: rgba(225, 200, 157, 1); //#E1C89D
@@ -19,9 +19,13 @@ $color-charcoal: rgba(63, 79, 95, 1); //#3F4F5F  -- consider gray-300
 $color-khaki: rgba(187, 167, 130, 1); //#BBA782
 $color-burlywood: rgba(222, 184, 135, 1); //#DEB887
 
-/*----------  Colors from template ----------*/
+// $color-scrollbar-background: rgb(182, 134, 0, 1); //#B68600
+
+/*----------  Colors we're using from template ----------*/
 
 $color-text-white: rgba(250, 250, 250, 1);
+
+/*----------  Other colors from template ----------*/
 
 $color-text-gray-100: rgba(188, 194, 206, 1);
 // $color-text-gray-200: rgba(126, 134, 148, 1);
@@ -44,8 +48,6 @@ $color-background-light-blue-100: rgba(239, 245, 248, 1);
 $color-background-light-blue-200: rgba(231, 239, 244, 1);
 $color-background-light-blue-300: rgba(151, 200, 247, 0.48);
 
-$color-scrollbar-background: rgb(75, 75, 75);
-
 $color-focus-outline: rgba(151, 200, 247, 0.68);
 
 $color-brand-blue-600: rgba(20, 117, 220, 1);
@@ -66,12 +68,14 @@ $color-categories-other-text: rgba(33, 90, 88, 1);
 $color-categories-other-fill: rgba(234, 246, 249, 1);
 
 /*----------  Fonts  ----------*/
-$font__synthese: synthese, sans-serif;
+$font__jost: jost, sans-serif;
+$font__righteous: righteous, cursive;
 
-$font-family-default: $font__synthese;
+$font-family-default: $font__jost;
+$font-family-heading: $font__righteous;
 $font-size-default: 16px;
 $font-weight-default: 400;
-$font-weight-bold: 700;
+$font-weight-bold: 800;
 $font-line-height-default: 1.15;
 
 /*----------  Structure  ----------*/
