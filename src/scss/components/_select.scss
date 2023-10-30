@@ -19,7 +19,8 @@
   padding-left: var(--container-padding);
   padding-right: var(--container-padding);
   gap: rem(24);
-  background-color: $color-background-white;
+  // background of entire div containing all dropdowns
+  background-color: $color-off-white;
 
   @include breakpoint("medium") {
     display: grid;
@@ -31,50 +32,39 @@
 }
 
 .selectContainer {
-  padding: 0 4px;
   width: 100%;
 }
 
 .select-container {
   --border: 0;
   --background: transparent;
-  border-bottom: 1px solid $color-borders-gray-100;
+  border-bottom: 1px solid $color-main-red;
   --borderRadius: 0;
-  // --borderFocusColor: #{$color-brand-blue-600};
   @extend %text-style-ui-2;
-  // width: auto;
   --indicatorWidth: rem(12);
   --indicatorHeight: rem(6);
   --inputFontSize: rem(16);
   display: flex;
   flex-direction: column;
-
-  &::placeholder {
-    color: $color-text-gray-200;
-    @extend %text-style-ui-2;
-  }
+  // color of the text inside the dropdowns
+  color: $color-text-main;
 
   &:hover {
-    border-color: $color-brand-blue-600;
+    border-color: $color-main-red;
   }
 
   &:focus-within {
-    // border-color: $color-brand-blue-600;
-    border-bottom: 1px solid $color-brand-blue-600;
+    //underline color when dropdown is open
+    border-bottom: 1px solid $color-main-red;
 
     .select__select-tag-icon {
-      // color brand blue 600
-      filter: invert(39%) sepia(72%) saturate(6596%) hue-rotate(200deg)
-        brightness(100%) contrast(84%);
+      fill: $color-dark-red;
+      color: $color-dark-red;
     }
   }
 
   @include breakpoint("medium") {
     max-width: rem(350);
-  }
-
-  input {
-    position: relative !important;
   }
 }
 
