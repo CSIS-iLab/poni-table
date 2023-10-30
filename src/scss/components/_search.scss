@@ -33,14 +33,14 @@ label[aria-hidden="true"],
 
   &__input {
     border: 0;
-    background-color: transparent;
+    background-color: $color-off-white;
     padding-left: rem(32);
     padding-right: rem(32);
     padding-top: rem(8);
     padding-bottom: rem(8);
 
     &::placeholder {
-      color: $color-text-gray-200;
+      color: $color-placeholder;
     }
 
     &:focus {
@@ -94,8 +94,6 @@ label[aria-hidden="true"],
     height: 100%;
     display: flex;
     align-items: center;
-    // color: $color-text-gray-200;
-    filter: invert(57%) sepia(7%) saturate(666%) hue-rotate(180deg)
-      brightness(92%) contrast(89%);
+    fill: $color-charcoal;
   }
 }
