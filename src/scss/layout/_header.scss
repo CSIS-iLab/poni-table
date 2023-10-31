@@ -33,8 +33,6 @@
     background-repeat: no-repeat;
     width: 88px;
     height: 24px;
-    filter: invert(84%) sepia(63%) saturate(3063%) hue-rotate(331deg)
-      brightness(102%) contrast(104%);
 
     @include breakpoint("medium") {
       background: no-repeat url(/assets/static/CSIS-logo-long.svg);
@@ -44,8 +42,8 @@
     }
 
     &:hover {
-      filter: invert(47%) sepia(94%) saturate(545%) hue-rotate(11deg)
-        brightness(91%) contrast(102%);
+      filter: invert(53%) sepia(59%) saturate(4508%) hue-rotate(27deg)
+        brightness(99%) contrast(101%);
     }
   }
 
@@ -53,8 +51,8 @@
   button {
     &:hover {
       // color brand-blue-600
-      filter: invert(84%) sepia(63%) saturate(3063%) hue-rotate(331deg)
-        brightness(102%) contrast(104%);
+      filter: invert(53%) sepia(59%) saturate(4508%) hue-rotate(27deg)
+        brightness(99%) contrast(101%);
       color: $color-focus-outline;
       transition: $transition__link;
     }
