@@ -377,7 +377,7 @@
       transform: scaleX(-1) rotate(-35deg);
       display: inline-block;
       line-height: 1rem;
-      color: $color-brand-blue-600;
+      color: $color-light-red;
       text-align: center;
       font-size: 14px;
       position: absolute;
@@ -408,14 +408,13 @@
 
   :global(.iconDown) {
     pointer-events: none;
-    filter: invert(29%) sepia(13%) saturate(765%) hue-rotate(181deg)
-      brightness(95%) contrast(89%);
+    filter: invert(25%) sepia(18%) saturate(172%) hue-rotate(343deg)
+      brightness(96%) contrast(87%);
 
     &:hover,
     &:focus {
-      // color brand blue 600
-      filter: invert(39%) sepia(72%) saturate(6596%) hue-rotate(200deg)
-        brightness(100%) contrast(84%);
+      filter: invert(25%) sepia(18%) saturate(172%) hue-rotate(343deg)
+        brightness(96%) contrast(87%);
     }
   }
 
