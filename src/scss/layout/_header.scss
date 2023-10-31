@@ -29,11 +29,12 @@
   &__logo {
     display: inherit;
     transition: $transition__link;
-
     background-image: url(/assets/static/CSIS-logo.svg);
     background-repeat: no-repeat;
     width: 88px;
     height: 24px;
+    filter: invert(84%) sepia(63%) saturate(3063%) hue-rotate(331deg)
+      brightness(102%) contrast(104%);
 
     @include breakpoint("medium") {
       background: no-repeat url(/assets/static/CSIS-logo-long.svg);
@@ -52,9 +53,9 @@
   button {
     &:hover {
       // color brand-blue-600
-      // filter: invert(39%) sepia(72%) saturate(6596%) hue-rotate(200deg)
-      //   brightness(100%) contrast(84%);
-      // color: $color-focus-outline;
+      filter: invert(84%) sepia(63%) saturate(3063%) hue-rotate(331deg)
+        brightness(102%) contrast(104%);
+      color: $color-focus-outline;
       transition: $transition__link;
     }
 
