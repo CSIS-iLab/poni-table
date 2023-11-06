@@ -16,8 +16,6 @@
 
   $: totalEntries = filteredData.length
 
-  console.log(dataset)
-
   const eventTotal = dataset.data.length
   function getPGCount(category) {
     return dataset.data.filter((row) => row.category.includes(category)).length
