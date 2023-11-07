@@ -32,7 +32,7 @@
       extraContent = e.target.parentNode.parentNode.nextElementSibling
     }
 
-    title.classList.toggle("active")
+    title.classList.toggle("title--active")
     title.classList.toggle("table__body__cell--border")
     currentRow.classList.toggle("table__body__cell--border")
     // Show/Hide extraContent
