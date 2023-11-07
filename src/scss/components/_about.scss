@@ -172,6 +172,14 @@
           transition: $transition__link;
         }
       }
+
+      &:visited {
+        color: $color-dark-yellow;
+
+        .back-top__icon-container {
+          fill: $color-dark-yellow;
+        }
+      }
     }
 
     &__icon-container {
