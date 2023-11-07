@@ -22,9 +22,19 @@
     let currentRow = undefined
     let extraContent = undefined
 
-    title = e.target.parentNode.parentNode
-    currentRow = title.nextElementSibling
-    extraContent = e.target.parentNode.parentNode.nextElementSibling
+    // title = e.target.parentNode.parentNode
+    // currentRow = title.nextElementSibling
+    // extraContent = e.target.parentNode.parentNode.nextElementSibling
+
+    if (e.target.parentNode.classList.contains("title")) {
+      title = e.target.parentNode
+      currentRow = title.nextElementSibling
+      extraContent = e.target.parentNode.nextElementSibling
+    } else {
+      title = e.target.parentNode.parentNode
+      currentRow = title.nextElementSibling
+      extraContent = e.target.parentNode.parentNode.nextElementSibling
+    }
 
     title.classList.toggle("active")
     title.classList.toggle("table__body__cell--border")
