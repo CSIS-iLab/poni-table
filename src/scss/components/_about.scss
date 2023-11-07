@@ -86,6 +86,14 @@
           fill: $color-main-red;
         }
       }
+
+      &:visited {
+        color: $color-dark-yellow;
+
+        .icon-container {
+          fill: $color-dark-yellow;
+        }
+      }
     }
   }
 
