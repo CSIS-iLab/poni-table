@@ -3,8 +3,8 @@
 
 %text-style-heading-1 {
   @include font-clamp(36px, 53px);
-  font-family: $font-family-default;
-  font-weight: $font-weight-default;
+  font-family: $font-family-heading;
+  font-weight: $font-weight-bold;
   line-height: 1.1;
 }
 
@@ -74,8 +74,6 @@
 %text-style-ui-2 {
   @extend %text-style-ui-1;
   @include font-size(16px);
-  // font-family: $font-family-default;
-  // line-height:1.2;
 }
 
 %text-style-ui-2-bold {
@@ -83,10 +81,14 @@
   font-weight: $font-weight-bold;
 }
 
+%text-style-ui-2-caps {
+  @extend %text-style-ui-2;
+  text-transform: uppercase;
+}
+
 %text-style-ui-3 {
   @extend %text-style-ui-2;
   @include font-size(15px);
-  // line-height:120%;
 }
 
 %text-style-ui-3-italic {
@@ -98,19 +100,16 @@
 %text-style-ui-4 {
   @extend %text-style-ui-3;
   @include font-size(14px);
-  // line-height:120%;
 }
 
 %text-style-ui-4-underline {
   @extend %text-style-ui-4;
   text-decoration: underline;
-  // line-height:120%;
 }
 
 %text-style-ui-4-caps {
   @extend %text-style-ui-4;
   text-transform: uppercase;
-  // line-height:120%;
 }
 
 %text-style-ui-5 {
@@ -123,7 +122,6 @@
   @extend %text-style-ui-5;
   text-transform: uppercase;
   letter-spacing: 0.04em;
-  // line-height: 1;
 }
 
 %text-style-ui-5-bold-caps {

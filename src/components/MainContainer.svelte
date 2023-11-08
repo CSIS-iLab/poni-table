@@ -62,7 +62,7 @@
 <div id="site-content">
   <Header />
 
-  <IntroContent filteredData={filteredData()} />
+  <IntroContent />
 
   <section class="table-container">
     <Options
