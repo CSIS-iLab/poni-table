@@ -115,11 +115,12 @@
     }
 
     &__link {
-      color: $color-dark-yellow;
+      color: $color-light-yellow;
       text-decoration: none;
 
       &:hover {
         color: $color-dark-yellow;
+        transition: $transition__link;
       }
 
       &:focus {

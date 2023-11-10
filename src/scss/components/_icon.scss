@@ -37,6 +37,11 @@
     width: rem(18);
     height: rem(18);
   }
+
+  &:hover {
+    filter: invert(53%) sepia(59%) saturate(4508%) hue-rotate(27deg)
+      brightness(99%) contrast(101%);
+  }
 }
 
 .active {
