@@ -193,9 +193,6 @@
             <!-- event name/title -->
             <td class="table__body__cell table__body__cell--data"
               ><div class="table__body__cell__title-container">
-                {#if rows.key_moment !== null}
-                  <span>o</span>
-                {/if}
                 <span class="icon-container" />{rows.timelineEvent.title}
               </div></td
             >
