@@ -43,7 +43,7 @@
 
   const headerNames = [
     "Event",
-    "Date",
+    "Date (EST)",
     "Category",
     "Speaker",
     "Type of Resource",
