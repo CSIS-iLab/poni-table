@@ -1,7 +1,7 @@
 import * as d3Fetch from "d3-fetch"
 
 const URL =
-  "https://docs.google.com/spreadsheets/d/e/2PACX-1vS-_ERImv22VF5VJU8oWN2g9_uQ4LzJr21zOHHtizHHYTuQJvHZHJGaJE6d1DUDifpiPGqmZL4MIbgU/pub?output=csv"
+  "https://docs.google.com/spreadsheets/d/e/2PACX-1vS-_ERImv22VF5VJU8oWN2g9_uQ4LzJr21zOHHtizHHYTuQJvHZHJGaJE6d1DUDifpiPGqmZL4MIbgU/pub?gid=2021316330&single=true&output=csv"
 
 const months = [
   "January",
@@ -27,10 +27,13 @@ export default function getData() {
           title: row.title,
           quote: row.quote,
           sources: [
-            [row.source_1, row.vpn_required_1],
-            [row.source_2, row.vpn_required_2],
-            [row.source_3, row.vpn_required_3],
+            [row.source_1, row.source_name_1, row.vpn_required_1],
+            [row.source_2, row.source_name_2, row.vpn_required_2],
+            [row.source_3, row.source_name_3, row.vpn_required_3],
           ],
+          translation_source_used: row.translation_source_used,
+          translation_source_link: row.translation_source_link,
+          translation_source_name: row.translation_source_name,
           image_url: row.image_url,
           image_source: row.image_source,
           key_moment: row.key_moment,
@@ -41,7 +44,6 @@ export default function getData() {
         speaker: row.speaker,
         speaker_name: "",
         type: row.type,
-        //poni: date,
         date_string: row.date,
         date: "",
       }

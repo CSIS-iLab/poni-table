@@ -220,28 +220,55 @@
                 <div class="description">
                   <div>{rows.timelineEvent.quote}</div>
                   <div class="link">
-                    {#each rows.timelineEvent.sources as source}
+                    Source(s):
+                    {#each rows.timelineEvent.sources as source, index}
                       {#if source[0] != ""}
                         <a
                           href={source[0]}
                           target="_blank"
                           rel="noopener noreferrer"
-                          >Go to resource<span class="icon-container"
-                            ><Icon name="Icon-open-blank" class="icon" /></span
-                          >
-                        </a>
-                        {#if source[1] == 1}
+                          >{source[1]}{#if index == 0 && rows.timelineEvent.sources[1][0] != ""}
+                            ,
+                          {/if}
+                          {#if index == 1 && rows.timelineEvent.sources[2][0] != ""}
+                            ,
+                          {/if}</a
+                        >
+                        {#if source[2] == 1}
                           <span
                             class="icon-tag-container"
                             use:tooltip={{ theme: "poni" }}
                             aria-hidden="true"
                             aria-label="A vpn is required to view this source."
-                            ><Icon name="Icon-info-alt" class="icon" /></span
                           >
+                            <!-- Insert your VPN Icon here -->
+                            <Icon name="Icon-info-alt" class="icon" />
+                          </span>
                         {/if}
                       {/if}
                     {/each}
+                    {#if rows.timelineEvent.translation_source_link != ""}
+                      <br />
+                      Translation Source:
+                      <a
+                        href={rows.timelineEvent.translation_source_link}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        >{rows.timelineEvent.translation_source_name}</a
+                      >
+                    {/if}
                   </div>
+                  <!-- <div class="link">
+                    {#if rows.timelineEvent.translation_source_link != ""}
+                      Translation Source:
+                      <a
+                        href={rows.timelineEvent.translation_source_link}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        >{rows.timelineEvent.translation_source_name}</a
+                      >
+                    {/if}
+                  </div> -->
                 </div>
                 {#if rows.timelineEvent.image_url && rows.timelineEvent.image_source}
                   <div class="img-container">
