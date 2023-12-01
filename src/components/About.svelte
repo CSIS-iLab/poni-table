@@ -1,5 +1,5 @@
 <script>
-  import Icon from "./Icons.svelte";
+  import Icon from "./Icons.svelte"
 </script>
 
 <section class="about" id="about">
@@ -44,7 +44,9 @@
         Strategic and International Studies.
       </p>
       <p class="about__development__description">
-        Produced by Lindsay Urchyk, José Romero, and Mariel de la Garza.
+        Produced by Mariel de la Garza, José Romero, and Lindsay Urchyk.
+        <br />
+        Copyediting support by Katherine Stark and Rayna Salam.
       </p>
     </div>
     <div class="back-top-container">
