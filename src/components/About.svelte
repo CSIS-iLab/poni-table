@@ -46,7 +46,7 @@
       <p class="about__development__description">
         Produced by Mariel de la Garza, José Romero, and Lindsay Urchyk.
         <br />
-        Copyediting support by Katherine Stark and Rayna Salam.
+        Copyediting by Katherine Stark and Rayna Salam.
       </p>
     </div>
     <div class="back-top-container">
