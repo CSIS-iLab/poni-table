@@ -47,6 +47,8 @@
         Produced by Mariel de la Garza, José Romero, and Lindsay Urchyk.
         <br />
         Copyediting by Katherine Stark and Rayna Salam.
+        <br />
+        Cover design by Michael Kohler.
       </p>
     </div>
     <div class="back-top-container">
