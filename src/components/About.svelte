@@ -23,10 +23,10 @@
         <li>
           <a
             class="about__reports__link"
-            href="https://preview.shorthand.com/MgilEO31u8wwFNEx"
+            href="https://features.csis.org/deter-and-divide-russia-nuclear-rhetoric/index.html"
             target="_blank"
-            >Atomic Rhetoric: The Role of Nuclear Weapons in the War in Ukraine<span
-              class="icon-container"
+            >Deter and Divide: Russia's Nuclear Rhetoric & Escalation Risks in
+            Ukraine<span class="icon-container"
               ><Icon class="icon__report" name="Icon-open-blank" /></span
             ></a
           >
