@@ -2,7 +2,7 @@
 
 ### Quick Start Instructions
 
-This repo uses `node v21.7.3 (npm v10.5.0)`
+This repo uses `node v22.10.0 (npm v10.9.0)` and `svelte 5`
 
 @TODO: Update with final link to data: 
 Data coming from `https://docs.google.com/spreadsheets/d/e/update-id-here/pub?output=csv`
