@@ -283,7 +283,7 @@
       items={dataset.type}
       placeholder="Select a type"
       on:select={(event) => handleSelect(event, "Type")}
-      on:clear={(event) => handleClear("Type")}
+      on:clear={() => handleClear("Type")}
     />
   </div>
   <!--Month-->

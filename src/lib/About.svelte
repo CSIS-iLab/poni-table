@@ -36,7 +36,7 @@
     <div class="about__development">
       <h3 class="about__development__title">Development Team</h3>
       <p class="about__development__description">
-        This database is a product of the <a
+        This database of Nuclear Signaling During the War in Ukraine is a product of the <a
           class="about__development__link"
           href="https://www.csis.org/programs/dracopoulos-ideas-lab"
           target="_blank">Andreas C. Dracopoulos iDeas Lab</a

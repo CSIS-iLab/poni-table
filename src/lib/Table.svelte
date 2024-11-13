@@ -258,17 +258,6 @@
                       >
                     {/if}
                   </div>
-                  <!-- <div class="link">
-                    {#if rows.timelineEvent.translation_source_link != ""}
-                      Translation Source:
-                      <a
-                        href={rows.timelineEvent.translation_source_link}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        >{rows.timelineEvent.translation_source_name}</a
-                      >
-                    {/if}
-                  </div> -->
                 </div>
                 {#if rows.timelineEvent.image_url && rows.timelineEvent.image_source}
                   <div class="img-container">
@@ -305,6 +294,18 @@
 <style lang="scss">
   @use "../scss/abstracts/" as *;
   @use "../scss/components/table";
+
+
+  :global(.title--active .table__body__cell__title-container .icon-container::before) {
+    transform: rotate(-45deg);
+    transition: $transition__link;
+  }
+
+  :global(.title--active .table__body__cell__title-container .icon-container::after) {
+    transform: rotate(45deg);
+    transition: $transition__link;
+  }
+  
   :global(.tippy-box[data-theme~="poni"]) {
     @extend %text-style-ui-4;
     color: $color-text-gray-500;
