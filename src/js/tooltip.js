@@ -1,5 +1,5 @@
 // tooltip.js
-module.exports = function tooltip(node, params = {}) {
+export default function tooltip(node, params = {}) {
   // Determine the title to show. We want to prefer
   // the custom content passed in first, then the
   // HTML title attribute then the aria-label

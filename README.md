@@ -2,7 +2,7 @@
 
 ### Quick Start Instructions
 
-This repo uses `node v16.9.1 (npm v8.4.1)`
+This repo uses `node v22.10.0 (npm v10.9.0)` and `svelte 5`
 
 @TODO: Update with final link to data: 
 Data coming from `https://docs.google.com/spreadsheets/d/e/update-id-here/pub?output=csv`
@@ -10,12 +10,12 @@ Data coming from `https://docs.google.com/spreadsheets/d/e/update-id-here/pub?ou
 Clone & Install the dependencies...
 
 ```bash
-git clone git@github.com:CSIS-iLab/poni-timeline.git
-cd poni-timeline
+git clone git@github.com:CSIS-iLab/poni-table.git
+cd poni-table
 npm install
 ```
 
-...then start [Rollup](https://rollupjs.org):
+...then start with:
 
 ```bash
 npm run dev
